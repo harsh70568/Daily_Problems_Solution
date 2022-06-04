@@ -40,7 +40,6 @@ class Solution
         int one_count = 0;
         int two_count = 0;
         Node* curr = head;
-        Node* temp = head;
         while(curr)
         {
             switch(curr->data)
@@ -59,23 +58,25 @@ class Solution
                   break;
             }
         }
-        while(temp)
+        curr = head;
+        while(curr)
         {
-            while(zero_count--)
-            {
-                temp->data = 0;
-                temp = temp->next;
-            }
-            while(one_count--)
-            {
-                temp->data = 1;
-                temp = temp->next;
-            }
-            while(two_count--)
-            {
-                temp->data = 2;
-                temp = temp->next;
-            }
+           if(zero_count)
+           {
+               curr->data = 0;
+               zero_count--;
+           }
+           else if(one_count)
+           {
+               curr->data = 1;
+               one_count--;
+           }
+           else 
+           {
+               curr->data = 2;
+               two_count--;
+           }
+           curr = curr->next;
         }
         return head;
         
