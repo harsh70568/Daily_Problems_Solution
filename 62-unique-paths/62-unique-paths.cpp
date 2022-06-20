@@ -2,8 +2,8 @@ class Solution {
 public:
     int solve(vector<vector<int>> &dp,int i, int j, int m, int n)
     {
-        if(i == m-1 || j == n-1) return 1;
-        if(i > m-1 || j >= n-1) return 0;
+        if(i == m-1 && j == n-1) return 1;
+        if(i > m-1 || j > n-1) return 0;
         
         if(dp[i][j] != -1) return dp[i][j];
         
