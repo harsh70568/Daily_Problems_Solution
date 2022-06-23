@@ -3,7 +3,7 @@ public:
     int percentageLetter(string s, char letter) {
         unordered_map<char,int> mpp;
         int n = s.length();
-        for(int i = 0; i < s.length(); i++)
+        for(int i = 0; i < n; i++)
         {
             mpp[s[i]]++;
         }
