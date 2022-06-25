@@ -15,33 +15,34 @@ public:
         int count = 0;
         while(head)
         {
-            count++;
             head = head->next;
+            count++;
         }
         return count;
     }
     ListNode* reverseKGroup(ListNode* head, int k) {
         ListNode* curr = head;
         ListNode* prev = NULL;
-        ListNode* next = NULL;
+        ListNode* forw = NULL;
         int count = 0;
         while(curr && count < k)
         {
-            next = curr->next;
+            forw = curr->next;
             curr->next = prev;
             prev = curr;
-            curr = next;
+            curr = forw;
             count++;
         }
         
-        if(next && length(next) >= k)
+        if(forw && length(forw) >= k)
         {
-            head->next = reverseKGroup(next,k);
+            head->next = reverseKGroup(forw,k);
         }
         else
         {
-            head->next = next;
+            head->next = forw;
         }
+        
         return prev;
     }
 };
