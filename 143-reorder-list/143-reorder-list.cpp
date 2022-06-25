@@ -10,40 +10,56 @@
  */
 class Solution {
 public:
+    ListNode* reverse(ListNode* head)
+    {
+        ListNode* p = head;
+        ListNode* q = NULL;
+        ListNode* r = NULL;
+        while(p)
+        {
+            r = q;
+            q = p;
+            p = p->next;
+            q->next = r;
+        }
+        return q;
+    }
     void reorderList(ListNode* head) {
+        if(head == NULL || head->next == NULL) return;
         ListNode* slow = head;
         ListNode* fast = head;
         ListNode* prev = NULL;
-        ListNode* next = NULL;
         while(fast && fast->next)
         {
+            prev = slow;
             slow = slow->next;
             fast = fast->next->next;
         }
-        while(slow)
+        prev->next = NULL;
+        ListNode* new_head = reverse(slow);
+        ListNode* dummy = new ListNode(-1);
+        ListNode* curr = dummy;
+        while(new_head && head)
         {
-            next = slow->next;
-            slow->next = prev;
-            prev = slow;
-            slow = next;
-        }
-        ListNode* dummy = new ListNode(0);
-        ListNode* temp  = dummy;
-        while(head && prev)
-        {
-            temp->next = head;
+            curr->next = head;
             head = head->next;
-            temp  =temp->next;
-            temp->next = prev;
-            prev = prev->next;
-            temp = temp->next;
+            curr = curr->next;
+            
+            curr->next = new_head;
+            new_head = new_head->next;
+            curr = curr->next;
         }
-        if(prev)
+        if(new_head)
         {
-            temp->next = prev;
-            prev->next = NULL;
-            prev = prev->next;
+            curr->next = new_head;
+            curr = curr->next;
         }
+        if(head)
+        {
+             curr->next = head;
+            curr = curr->next;
+        }
+        curr->next = NULL;
         head = dummy->next;
         
     }
