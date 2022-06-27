@@ -20,12 +20,13 @@ public:
         while(!q.empty())
         {
             int size = q.size();
-            stack<int> st;
             vector<int> temp;
+            stack<int> st;
             for(int i = 0; i < size; i++)
             {
                 TreeNode* curr = q.front();
                 q.pop();
+                
                 if(flag == 0)
                 {
                     temp.push_back(curr->val);
@@ -34,6 +35,7 @@ public:
                 {
                     st.push(curr->val);
                 }
+                
                 if(curr->left) q.push(curr->left);
                 if(curr->right) q.push(curr->right);
             }
