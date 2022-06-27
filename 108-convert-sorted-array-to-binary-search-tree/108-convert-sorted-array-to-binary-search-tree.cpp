@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    TreeNode* solve(vector<int> nums, int s, int e)
+    TreeNode* solve(vector<int>&nums, int s, int e)
     {
         if(s > e) return NULL;
         int mid = (s+e)/2;
@@ -21,6 +21,9 @@ public:
         return root;
     }
     TreeNode* sortedArrayToBST(vector<int>& nums) {
-        return solve(nums,0,nums.size()-1);
+        int s = 0;
+        int e = nums.size()-1;
+        return solve(nums,s,e);
+        
     }
 };
