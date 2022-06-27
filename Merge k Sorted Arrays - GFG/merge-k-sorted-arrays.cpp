@@ -14,6 +14,29 @@ for (int i=0; i < size; i++)
  // } Driver Code Ends
 //User function Template for C++
 
+class data
+{
+    public:
+    int val;
+    int row;
+    int col;
+    data(int v, int r, int c)
+    {
+        val = v;
+        row = r;
+        col = c;
+    }
+};
+
+//min heap
+struct mycomp
+{
+    bool operator()(data &d1, data &d2)
+    {
+        return d1.val > d2.val;
+    }
+};
+
 
 class Solution
 {
@@ -23,15 +46,28 @@ class Solution
     {
         //code here
         vector<int> ans;
+        priority_queue<data,vector<data>, mycomp> pq;
         for(int i = 0; i < K; i++)
         {
-            for(int j = 0; j < K; j++)
-            {
-                ans.push_back(arr[i][j]);
-            }
+            data d(arr[i][0],i,0);
+            pq.push(d);
         }
         
-        sort(ans.begin(),ans.end());
+        while(!pq.empty())
+        {
+            data curr = pq.top();
+            pq.pop();
+            ans.push_back(curr.val);
+            
+            int r_num = curr.row;
+            int c_num = curr.col;
+            
+            if(c_num+1 < arr[r_num].size())
+            {
+                data d(arr[r_num][c_num+1],r_num,c_num+1);
+                pq.push(d);
+            }
+        }
         return ans;
     }
 };
