@@ -1,23 +1,21 @@
 class Solution {
 public:
-    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
-        vector<pair<int,int>> ans;
+    static bool cmp(vector<int> &a, vector<int> &b)
+    {
+        return a[1] > b[1];
+    }
+    int maximumUnits(vector<vector<int>>& ans, int truckSize) {
         
         int count = 0;
-        for(auto it : boxTypes)
-        {
-            ans.push_back({it[1],it[0]});
-        }
         
-        sort(ans.begin(),ans.end());
-        reverse(ans.begin(),ans.end());
+        sort(ans.begin(),ans.end(),cmp);
         
         for(auto it : ans)
         {
             if(truckSize == 0) return count;
-            int mini = min(it.second,truckSize);
+            int mini = min(it[0],truckSize);
             truckSize -= mini;
-            count += mini*it.first;
+            count += mini*it[1];
         }
         return count;
     }
