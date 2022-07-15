@@ -25,7 +25,6 @@ class Solution{
         vector<int> ans(s.begin(),s.end());
         return ans;
         
-        
     }
 };
 
