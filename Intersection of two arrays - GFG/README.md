@@ -1,5 +1,5 @@
 # Intersection of two arrays
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given two arrays&nbsp;<strong>a[]</strong> and <strong>b[]</strong> respectively of size <strong>n</strong> and <strong>m, </strong>the task is to print the count of elements in the intersection (or common elements) of the two arrays.</span></p>
 
