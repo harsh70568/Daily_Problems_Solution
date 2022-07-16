@@ -6,20 +6,19 @@ public:
         {
             s.insert(nums[i]);
         }
-        
         int longest_streak = 0;
         for(int i = 0; i < nums.size(); i++)
         {
             if(s.find(nums[i]-1) == s.end())
             {
-                int current_elem = nums[i];
-                int current_streak = 1;
-                while(s.find(current_elem+1) != s.end())
+                int curr_elem = nums[i];
+                int curr_streak = 1;
+                while(s.find(curr_elem+1) != s.end())
                 {
-                    current_elem = current_elem+1;
-                    current_streak++;
+                    curr_streak++;
+                    curr_elem++;
                 }
-                longest_streak = max(longest_streak,current_streak);
+                longest_streak = max(longest_streak,curr_streak);
             }
         }
         return longest_streak;
