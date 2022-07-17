@@ -36,7 +36,7 @@ public:
             curr = item;
         }
         
-        Node* dummy = new Node(0);
+        Node* dummy = new Node(-1);
         Node* temp = dummy;
         curr = head;
         while(curr)
