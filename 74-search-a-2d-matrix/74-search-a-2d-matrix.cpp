@@ -3,19 +3,18 @@ public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int n = matrix.size();
         int m = matrix[0].size();
-        int start = 0;
-        int end = n*m-1;
-        while(start <= end)
+        int i = 0;
+        int j = m-1;
+        while(i < n && j > -1)
         {
-            int mid = (start+end)/2;
-            if(matrix[mid/m][mid%m] == target) return true;
-            else if(matrix[mid/m][mid%m] < target)
+            if(matrix[i][j] == target) return true;
+            else if(matrix[i][j] > target)
             {
-                start = mid+1;
+                j--;
             }
             else
             {
-                end = mid-1;
+                i++;
             }
         }
         return false;
