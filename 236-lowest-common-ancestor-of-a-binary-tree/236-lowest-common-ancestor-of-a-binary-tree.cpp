@@ -9,7 +9,7 @@
  */
 class Solution {
 public:
-    TreeNode* solve(TreeNode* root, TreeNode* p, TreeNode* q)
+    TreeNode* solve(TreeNode* root, TreeNode *p, TreeNode* q)
     {
         if(root == NULL) return NULL;
         if(root->val == p->val || root->val == q->val) return root;
@@ -19,8 +19,10 @@ public:
         if(l && r) return root;
         if(l) return l;
         else return r;
+        
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         return solve(root,p,q);
+        
     }
 };
