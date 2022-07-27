@@ -13,7 +13,7 @@ class Solution {
 public:
     void preorder(TreeNode* root, vector<int> &ans)
     {
-        if(root != NULL)
+        if(root)
         {
             ans.push_back(root->val);
             preorder(root->left,ans);
@@ -32,8 +32,7 @@ public:
             TreeNode* temp = new TreeNode(ans[i]);
             curr->left = NULL;
             curr->right = temp;
-            curr = curr->right;
+            curr = temp;
         }
-        return;
     }
 };
