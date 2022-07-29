@@ -2,9 +2,9 @@ class Solution {
 public:
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
         vector<string> ans;
-        for(int j = 0; j < words.size(); j++)
+       for(auto str : words)
         {
-            string temp = words[j];
+            string temp = str;
             unordered_map<char,char> mpp;
             set<char> s;
             int i;
