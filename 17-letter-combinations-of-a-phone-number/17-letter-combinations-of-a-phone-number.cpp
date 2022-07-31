@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void solve(string digits, vector<string> &ans, string temp, string mapping[], int index)
+    void solve(string digits,vector<string> &ans, int index, string mapping[],string temp)
     {
         if(index >= digits.size())
         {
@@ -8,23 +8,22 @@ public:
             return;
         }
         
-        int number = digits[index]-'0';
-        string value = mapping[number];
-        
-        for(int i = 0; i < value.length(); i++)
+        int value = digits[index]-'0';
+        string str = mapping[value];
+        for(int i = 0; i < str.length(); i++)
         {
-            temp.push_back(value[i]);
-            solve(digits,ans,temp,mapping,index+1);
+            temp.push_back(str[i]);
+            solve(digits,ans,index+1,mapping,temp);
             temp.pop_back();
         }
     }
     vector<string> letterCombinations(string digits) {
         vector<string> ans;
         if(digits.length() == 0) return ans;
-        string temp = "";
-        int index = 0;
+        int i = 0;
         string mapping[] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-        solve(digits,ans,temp,mapping,index);
+        string str = "";
+        solve(digits,ans,i,mapping,str);
         return ans;
     }
 };
