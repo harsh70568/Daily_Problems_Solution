@@ -30,7 +30,7 @@ public:
         while(max_count--)
         {
             str[index] = max_ch;
-            index += 2;
+            index = index+2;
         }
         count[max_ch-'a'] = 0;
         
@@ -40,7 +40,7 @@ public:
             {
                 index = (index >= n) ? 1 : index;
                 str[index] = i+'a';
-                index += 2;
+                index = index+2;
                 count[i]--;
             }
         }
