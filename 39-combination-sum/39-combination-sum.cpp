@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void solve(vector<int> candidates, int target, vector<vector<int>> &ans ,vector<int> temp,int index)
+    void solve(vector<int> &candidates, int target, vector<vector<int>> &ans ,vector<int> &temp,int index)
     {
         if(index >= candidates.size())
         {
