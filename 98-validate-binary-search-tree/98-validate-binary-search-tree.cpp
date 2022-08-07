@@ -13,12 +13,11 @@ class Solution {
 public:
     void solve(TreeNode* root, long long mini, long long maxi, bool &flag)
     {
-       if(root == NULL) return;
-       if(root->val <= mini || root->val >= maxi) flag = false;
+        if(root == NULL) return;
+        if(root->val <= mini || root->val >= maxi) flag = false;
         
-       solve(root->left,mini,root->val,flag);
+        solve(root->left,mini,root->val,flag);
         solve(root->right,root->val,maxi,flag);
-        
     }
     bool isValidBST(TreeNode* root) {
         bool flag = true;
