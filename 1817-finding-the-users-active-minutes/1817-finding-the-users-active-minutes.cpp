@@ -9,10 +9,9 @@ public:
             mpp[logs[i][0]].insert(logs[i][1]);
         }
         
-        for(auto it : mpp)
+        for(auto &it : mpp)
         {
-            set<int> s = it.second;
-            ans[s.size()-1]++; 
+            ans[(it.second).size()-1]++; 
         }
         return ans;
     }
