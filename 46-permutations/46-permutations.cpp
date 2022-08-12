@@ -10,9 +10,9 @@ public:
         
         for(int i = index; i < nums.size(); i++)
         {
-            swap(nums[i],nums[index]);
+            swap(nums[index],nums[i]);
             solve(nums,ans,index+1);
-            swap(nums[i],nums[index]);
+            swap(nums[index],nums[i]);
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
