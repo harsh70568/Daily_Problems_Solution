@@ -1,13 +1,12 @@
 class Solution {
 public:
-    int solve(int index, vector<int> cost, vector<int> &dp)
+    int solve(int index, vector<int> &cost, vector<int> &dp)
     {
         dp[0] = dp[1] = 0;
         for(int i = 2; i <= index; i++){
-        int n_2 = INT_MAX;
         int n_1 = dp[i-1] + cost[i-1];
-        if(i > 1)  n_2 = dp[i-2] + cost[i-2];
-            dp[i] = min(n_1,n_2);
+        int n_2 = dp[i-2] + cost[i-2];
+        dp[i] = min(n_1,n_2);
         }
         return dp[index];
     }
