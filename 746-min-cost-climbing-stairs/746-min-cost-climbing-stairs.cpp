@@ -2,12 +2,14 @@ class Solution {
 public:
     int solve(int index, vector<int> cost, vector<int> &dp)
     {
-        if(index <= 1) return 0;
-        if(dp[index] != -1) return dp[index];
+        dp[0] = dp[1] = 0;
+        for(int i = 2; i <= index; i++){
         int n_2 = INT_MAX;
-        int n_1 = solve(index-1,cost,dp) + cost[index-1];
-        if(index > 1)  n_2 = solve(index-2,cost,dp) + cost[index-2];
-        return dp[index] = min(n_1,n_2);
+        int n_1 = dp[i-1] + cost[i-1];
+        if(i > 1)  n_2 = dp[i-2] + cost[i-2];
+            dp[i] = min(n_1,n_2);
+        }
+        return dp[index];
     }
     
     int minCostClimbingStairs(vector<int>& cost){
