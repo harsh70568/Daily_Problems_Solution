@@ -6,7 +6,7 @@ public:
         if(index < 0) return 0;
         for(int i = 1; i <= index; i++){
             int pick = nums[i];
-        if(i > 1) pick = nums[i] + dp[i-2];
+        if(i > 1) pick += dp[i-2];
         int not_pick = 0 + dp[i-1];
             dp[i] = max(pick,not_pick);
         }
