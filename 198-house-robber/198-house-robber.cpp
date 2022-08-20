@@ -1,29 +1,17 @@
 class Solution {
 public:
-    int solve(vector<int>& nums, int n, vector<int> &dp) // recursion + memoization
+    int solve(int index, vector<int> &nums, vector<int> &dp)
     {
-        if(n<0)
-            return 0;
+        if(index == 0) return nums[index];
+        if(index < 0) return 0;
+        if(dp[index] != -1) return dp[index];
+        int pick = nums[index] + solve(index-2,nums,dp);
+        int not_pick = 0 + solve(index-1,nums,dp);
         
-        if(n==0)
-            return nums[0];
-        
-        if(dp[n] != -1)
-            return dp[n];
-        
-        int incl = solve(nums,n-2,dp) + nums[n];
-        
-        int excl = solve(nums,n-1,dp) + 0;
-            
-        dp[n] = max(incl, excl);
-        
-        return dp[n];
+        return dp[index] = max(pick,not_pick);
     }
-    
-    int rob(vector<int>& nums)
-    {
+    int rob(vector<int>& nums) {
         vector<int> dp(nums.size()+1,-1);
-        int ans = solve(nums,nums.size()-1,dp);
-        return ans;
+        return solve(nums.size()-1,nums,dp);
     }
 };
