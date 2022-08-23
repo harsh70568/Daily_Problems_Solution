@@ -27,23 +27,22 @@ public:
     bool isPalindrome(ListNode* head) {
         ListNode* slow = head;
         ListNode* fast = head;
+        ListNode* prev = NULL;
         while(fast && fast->next)
         {
-           
+            prev = slow;
             slow = slow->next;
             fast = fast->next->next;
         }
-        ListNode* start = head;
-        ListNode* end = reverse(slow);
-        while(end)
+        
+        ListNode* head_2 = reverse(slow);
+        while(head_2)
         {
-            if(start->val != end->val)
-            {
-                return false;
-            }
-            start = start->next;
-            end = end->next;
+            if(head_2->val != head->val) return false;
+            head_2 = head_2->next;
+            head = head->next;
         }
         return true;
+    
     }
 };
