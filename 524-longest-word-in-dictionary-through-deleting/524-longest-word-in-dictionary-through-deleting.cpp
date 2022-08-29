@@ -25,17 +25,15 @@ public:
         else return false;
     }
     string findLongestWord(string s, vector<string>& dictionary) {
-        vector<string> ans;
+        sort(dictionary.begin(),dictionary.end(),cmp);
         for(int i = 0; i < dictionary.size(); i++)
         {
             if(is_check(s,dictionary[i]))
             {
-                ans.push_back(dictionary[i]);
+               return dictionary[i];
             }
         }
         
-        sort(ans.begin(),ans.end(),cmp);
-        if(ans.size() == 0) return "";
-        return ans[0];
+        return "";
     }
 };
