@@ -22,6 +22,7 @@ public:
         }
     }
     TreeNode* bstToGst(TreeNode* root) {
+        if(root == NULL) return 0;
         vector<int> ans;
         vector<TreeNode*> node;
         inorder(root,ans,node);
