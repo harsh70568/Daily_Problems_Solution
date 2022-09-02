@@ -1,6 +1,6 @@
 class Solution {
 public:
-   static bool myCompare(pair<int, int> a, pair<int, int> b)
+   static bool myCompare(pair<int, int> &a, pair<int, int> &b)
     {
         if(a.second== b.second)
         {
