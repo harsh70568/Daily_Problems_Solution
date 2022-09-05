@@ -4,6 +4,7 @@ public:
         int n = nums.size();
         vector<int> ans(n);
         int k = 0;
+        int s = 1;
         for(int i = 0; i < n; i++)
         {
             if(nums[i] > 0)
@@ -11,16 +12,13 @@ public:
                 ans[k] = nums[i];
                 k += 2;
             }
-        }
-        k = 1;
-        for(int i = 0; i < n; i++)
-        {
-            if(nums[i] < 0)
+            else
             {
-                ans[k] = nums[i];
-                k += 2;
+                ans[s] = nums[i];
+                s += 2;
             }
         }
+       
         
         return ans;
     }
