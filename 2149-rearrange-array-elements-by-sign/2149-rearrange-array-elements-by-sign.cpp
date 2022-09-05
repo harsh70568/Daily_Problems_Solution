@@ -14,14 +14,12 @@ public:
         }
         
         int i = 0;
-        int j = 0;
         int k = 0;
-        while(i < n/2 || j < n/2)
+        while(i < n/2)
         {
             ans[k++] = pos[i];
-            ans[k++] = neg[j];
+            ans[k++] = neg[i];
             i++;
-            j++;
         }
         
         
