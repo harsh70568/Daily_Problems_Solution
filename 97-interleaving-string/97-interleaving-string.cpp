@@ -9,7 +9,7 @@ public:
         {
             return dp[i][j] = solve(i+1,j,k+1,a,b,c,dp) || solve(i,j+1,k+1,a,b,c,dp);
         }
-        else if(i < a.length() && a[i] == c[k])
+        else if(a[i] == c[k])
         {
             return dp[i][j] = solve(i+1,j,k+1,a,b,c,dp);
         }
