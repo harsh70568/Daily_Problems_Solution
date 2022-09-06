@@ -11,10 +11,10 @@ public:
             }
         }
         
-        int count = 0;
+        int count = 1;
         while(!pq.empty())
         {
-            if(count+1 == k) return pq.top();
+            if(count == k) return pq.top();
             pq.pop();
             count++;
         }
