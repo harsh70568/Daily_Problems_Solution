@@ -21,7 +21,7 @@ public:
             ans.push_back(temp);
             return;
         }
-        temp += root->val+'a';
+         temp += root->val + 'a';
         solve(root->left,temp,ans);
         solve(root->right,temp,ans);
         
