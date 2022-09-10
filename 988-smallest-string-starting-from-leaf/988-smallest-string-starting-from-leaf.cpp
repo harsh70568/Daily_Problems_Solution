@@ -11,27 +11,29 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root, string temp, vector<string> &ans)
+    string ans;
+    void solve(TreeNode* root, string temp)
     {
         if(root == NULL) return;
         if(root->left == NULL && root->right == NULL)
         {
             temp.push_back(root->val+'a');
             reverse(temp.begin(),temp.end());
-            ans.push_back(temp);
+            
+            if(temp.length() > 0 && temp < ans) ans = temp;
             return;
         }
-         temp += root->val + 'a';
-        solve(root->left,temp,ans);
-        solve(root->right,temp,ans);
+        
+        temp += root->val + 'a';
+        solve(root->left,temp);
+        solve(root->right,temp);
         
     }
     string smallestFromLeaf(TreeNode* root) {
-        vector<string> ans;
+        ans = 1 + 'z';
         string temp = "";
-        solve(root,temp,ans);
+        solve(root,temp);
         
-        sort(ans.begin(),ans.end());
-        return ans[0];
+        return ans;
     }
 };
