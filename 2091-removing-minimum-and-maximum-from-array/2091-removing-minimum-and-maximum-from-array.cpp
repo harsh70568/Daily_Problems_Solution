@@ -6,7 +6,7 @@ public:
         int maxi = INT_MIN;
         int first = -1;
         int second = -1;
-        for(int i = 0; i < nums.size(); i++)
+        for(int i = 0; i < n; i++)
         {
            if(nums[i] < mini)
            {
@@ -26,7 +26,7 @@ public:
         int s = n - min(first,second) + 1;
         int th = min(first,n - first + 1) + min(second,n - second + 1);
         
-        return min(f,min(s,th));
+        return min({f,s,th});
         
         
     }
