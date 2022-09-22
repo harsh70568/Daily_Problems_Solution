@@ -1,7 +1,7 @@
 class Solution {
 public:
     string addSpaces(string s, vector<int>& spaces) {
-        sort(spaces.begin(),spaces.end());
+        //sort(spaces.begin(),spaces.end());
         string ans = "";
         
         int j = 0;
