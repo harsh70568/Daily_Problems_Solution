@@ -1,7 +1,6 @@
 class Solution {
 public:
     string addSpaces(string s, vector<int>& spaces) {
-        //sort(spaces.begin(),spaces.end());
         string ans = "";
         
         int j = 0;
@@ -13,14 +12,13 @@ public:
             if(j < spaces.size() && count == spaces[j])
             {
                 ans += temp;
-                ans += " ";
+                ans.push_back(' ');
                 temp = s[i];
                 j++;
-                
             }
             else
             {
-                temp += s[i];
+                temp.push_back(s[i]);
             }
             count++;
         }
