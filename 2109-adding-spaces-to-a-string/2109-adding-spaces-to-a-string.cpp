@@ -5,15 +5,10 @@ public:
         string ans = "";
         
         int j = 0;
-        int count = 1;
+        int count = 0;
         string temp = "";
-        temp += s[0];
-        if(spaces[0] == 0)
-        {
-            ans += " ";
-            j++;
-        }
-        for(int i = 1; i < s.length(); i++)
+        
+        for(int i = 0; i < s.length(); i++)
         {
             if(j < spaces.size() && count == spaces[j])
             {
@@ -26,7 +21,6 @@ public:
             else
             {
                 temp += s[i];
-                //count++;
             }
             count++;
         }
