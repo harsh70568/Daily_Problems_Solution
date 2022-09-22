@@ -1,14 +1,13 @@
 class Solution {
 public:
     string largestWordCount(vector<string>& messages, vector<string>& senders) {
-        map<string,int> mpp;
+        unordered_map<string,int> mpp;
         int maxi = INT_MIN;
         string ans = "";
         
         for(int i = 0; i < messages.size(); i++)
         {
             int count = 1;
-            string temp = "";
             for(int j = 0; j < messages[i].length(); j++)
             {
                 if(messages[i][j] == ' ')
