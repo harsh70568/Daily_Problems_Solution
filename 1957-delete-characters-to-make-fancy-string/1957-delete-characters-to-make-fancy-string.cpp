@@ -2,12 +2,11 @@ class Solution {
 public:
     string makeFancyString(string s) {
         string ans = "";
-        stack<char> st;
-        
         int count = 1;
-        for(int i = 0; i < s.length(); i++)
+        
+        for(int i = 0; i < s.length()-1; i++)
         {
-            if(!st.empty() && st.top() == s[i])
+            if(s[i] == s[i+1])
             {
                 count++;
                 if(count < 3)
@@ -17,11 +16,11 @@ public:
             }
             else
             {
-                ans += s[i];
                 count = 1;
-                st.push(s[i]);
-            }
+                ans += s[i];
+            }  
         }
+        ans += s[s.length()-1];
         
         return ans;
     }
