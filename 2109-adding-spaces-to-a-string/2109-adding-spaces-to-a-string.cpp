@@ -4,25 +4,17 @@ public:
         string ans = "";
         
         int j = 0;
-        int count = 0;
-        string temp = "";
         
         for(int i = 0; i < s.length(); i++)
         {
-            if(j < spaces.size() && count == spaces[j])
+            if(j < spaces.size() && i == spaces[j])
             {
-                ans += temp;
-                ans.push_back(' ');
-                temp = s[i];
+                ans += ' ';
                 j++;
             }
-            else
-            {
-                temp.push_back(s[i]);
-            }
-            count++;
+            ans += s[i];
         }
-        ans += temp;
+        
         
         return ans;
     }
