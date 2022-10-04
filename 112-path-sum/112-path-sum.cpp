@@ -11,28 +11,26 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root, int target, bool &flag, int sum)
+    void solve(TreeNode* root, int target, bool &flag, int local_sum)
     {
         if(root == NULL) return;
         if(root->left == NULL && root->right == NULL)
         {
-            if(root->val + sum == target)
+            if(root->val + local_sum == target)
             {
                 flag = true;
             }
             return;
         }
-        sum += root->val;
-        solve(root->left,target,flag,sum);
-        solve(root->right,target,flag,sum);
         
+        local_sum += root->val;
+        solve(root->left, target, flag, local_sum);
+        solve(root->right, target, flag, local_sum);
     }
     bool hasPathSum(TreeNode* root, int targetSum) {
-        int sum = 0;
+        int local_sum = 0;
         bool flag = false;
-        
-        solve(root,targetSum,flag,sum);
-        
+        solve(root, targetSum, flag, local_sum);
         return flag;
         
     }
