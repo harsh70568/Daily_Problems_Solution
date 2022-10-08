@@ -14,16 +14,8 @@ public:
         
         if(dp[index][steps] != -1) return dp[index][steps];
         
-        long long right = 0;
-        long long left = 0;
-        if(index < arrLen-1)
-        {
-            right = solve(index+1, steps-1, arrLen) % mod;
-        }
-        if(index > 0)
-        {
-            left = solve(index-1, steps-1, arrLen) % mod;
-        }
+        long long right = solve(index+1, steps-1, arrLen) % mod;
+        long long left = solve(index-1, steps-1, arrLen) % mod;
         long long stay = solve(index, steps-1, arrLen) % mod;
         
         return dp[index][steps] = (right + left + stay) % mod;
