@@ -19,8 +19,8 @@ public:
         for(int i = 0; i < s.length(); i++)
         {
             st.push(s[i]);
-            if(st.size() >= n){
-            if(check(st, part))
+            //if(st.size() >= n){
+            if(st.size() >= n && check(st, part))
             {
                 int size = n;
                 while(size--)
@@ -28,7 +28,7 @@ public:
                     st.pop();
                 }
             }
-            }
+            //}
         }
         string ans = "";
         while(!st.empty())
