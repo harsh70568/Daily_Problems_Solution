@@ -4,8 +4,7 @@ public:
     {
         if(index == 0)
         {
-            if(n % nums[index] == 0) return n / nums[index];
-            else return 1e9;
+            return n;
         }
         
         if(dp[index][n] != -1) return dp[index][n];
