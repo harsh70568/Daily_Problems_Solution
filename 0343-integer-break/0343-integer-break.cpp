@@ -1,21 +1,23 @@
 class Solution {
 public:
    
-    int solve(int i, vector<int> &ans, int sum)
+    int solve(int i, vector<int> &ans, int sum, vector<vector<int>> &dp)
     {
         if(i == 0)
         {
             if(sum % ans[i] == 0) return pow(ans[i],sum/ans[i]); 
         }
         
-        int not_pick = solve(i-1, ans, sum);
+        if(dp[i][sum] != -1) return dp[i][sum];
+        
+        int not_pick = solve(i-1, ans, sum, dp);
         int pick = -1e9;
         if(ans[i] <= sum)
         {
-            pick = ans[i]*solve(i, ans, sum - ans[i]);
+            pick = ans[i]*solve(i, ans, sum - ans[i], dp);
         }
         
-        return max(pick, not_pick);
+        return dp[i][sum] = max(pick, not_pick);
     }
     int integerBreak(int n) {
         vector<int> ans;
@@ -23,8 +25,8 @@ public:
         {
             ans.push_back(i);
         }
-        
-        return solve(n-2, ans, n);
+        vector<vector<int>> dp(n, vector<int>(n+1,-1));
+        return solve(n-2, ans, n, dp);
         
     }
 };
