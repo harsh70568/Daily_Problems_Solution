@@ -1,7 +1,6 @@
 # Given a linked list of 0s, 1s and 2s, sort it.
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a linked list of <strong>N</strong>&nbsp;nodes where nodes can contain values&nbsp;<strong>0s</strong>, <strong>1s,</strong> and <strong>2s&nbsp;</strong>only. The task is to segregate <strong>0s</strong>, <strong>1s,</strong> and <strong>2s</strong>&nbsp;linked list such that all zeros segregate to head side, 2s at the end of the linked list, and 1s in the mid of 0s and 2s.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a linked list of <strong>N</strong>&nbsp;nodes where nodes can contain values&nbsp;<strong>0s</strong>, <strong>1s,</strong> and <strong>2s&nbsp;</strong>only. The task is to segregate <strong>0s</strong>, <strong>1s,</strong> and <strong>2s</strong>&nbsp;linked list such that all zeros segregate to head side, 2s at the end of the linked list, and 1s in the mid of 0s and 2s.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -29,9 +28,8 @@ the output will be 0 1 2 2.</span></pre>
 The task is to complete the function <strong>segregate</strong>() which segregates the nodes in the linked list as asked in the problem statement and returns the head of the modified linked list. The <strong>printing </strong>is done <strong>automatically </strong>by the <strong>driver code</strong>.</span></p>
 
 <p><span style="font-size:18px"><strong>Expected Time Complexity:&nbsp;</strong>O(N).<br>
-<strong>Expected Auxiliary Space:&nbsp;</strong>O(1).</span></p>
+<strong>Expected Auxiliary Space:&nbsp;</strong>O(N).</span></p>
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 &lt;= N &lt;= 10<sup>3</sup></span></p>
- <p></p>
-            </div>
+</div>
