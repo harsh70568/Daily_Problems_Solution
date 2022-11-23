@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -15,7 +15,7 @@ struct Node {
 struct Node *start = NULL;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 /*
  
   Node is defined as
@@ -36,55 +36,46 @@ class Solution
     Node* segregate(Node *head) {
         
         // Add code here
-        int zero_count = 0;
-        int one_count = 0;
-        int two_count = 0;
-        Node* curr = head;
-        while(curr)
+        Node* curr = new Node(-1);
+        Node* dummy = curr;
+        
+        int count_0 = 0;
+        int count_1 = 0;
+        int count_2 = 0;
+        
+        while(head)
         {
-            switch(curr->data)
-            {
-                case 0:
-                  zero_count++;
-                  curr = curr->next;
-                  break;
-                case 1:
-                  one_count++;
-                  curr = curr->next;
-                  break;
-                case 2:
-                  two_count++;
-                  curr = curr->next;
-                  break;
-            }
+            if(head->data == 0) count_0++;
+            else if(head->data == 1) count_1++;
+            else if(head->data == 2) count_2++;
+            head = head->next;
         }
-        curr = head;
-        while(curr)
+        
+        while(count_0--)
         {
-           if(zero_count)
-           {
-               curr->data = 0;
-               zero_count--;
-           }
-           else if(one_count)
-           {
-               curr->data = 1;
-               one_count--;
-           }
-           else 
-           {
-               curr->data = 2;
-               two_count--;
-           }
-           curr = curr->next;
+            curr->next = new Node(0);
+            curr = curr->next;
         }
-        return head;
+        
+        while(count_1--)
+        {
+            curr->next = new Node(1);
+            curr = curr->next;
+        }
+        
+        while(count_2--)
+        {
+            curr->next = new Node(2);
+            curr = curr->next;
+        }
+        
+        return dummy->next;
         
     }
 };
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 // Function to sort a linked list of 0s, 1s and 2s
 void printList(struct Node *Node) {
@@ -133,4 +124,5 @@ int main() {
     }
 
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
