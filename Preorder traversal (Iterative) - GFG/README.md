@@ -1,7 +1,6 @@
 # Preorder traversal (Iterative)
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary tree. Find the preorder traversal of the tree <strong>without using recursion</strong>.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary tree. Find the preorder traversal of the tree <strong>without using recursion</strong>.</span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -47,5 +46,4 @@ of the tree is 8 1 7 10 5 10 6 6.</span></pre>
 <span style="font-size:18px"><strong>Constraints:</strong></span><br>
 <span style="font-size:18px">1 ≤ Number of nodes ≤ 10<sup>5</sup></span><br>
 <span style="font-size:18px">1 ≤ Data of a node ≤ 10<sup>5</sup></span></p>
- <p></p>
-            </div>
+</div>
