@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for C++
 
 
@@ -85,7 +85,7 @@ Node* buildTree(string str) {
 }
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function Template for C++
 
 /* Tree Node
@@ -100,10 +100,9 @@ public:
     {
         //code here
         vector<int> ans;
-        if(root == NULL) return ans;
-        stack<Node*> st;
         Node* curr = root;
-        while(curr || !st.empty())
+        stack<Node*> st;
+        while(!st.empty() || curr)
         {
             if(curr)
             {
@@ -118,11 +117,12 @@ public:
                 curr = curr->right;
             }
         }
+        
         return ans;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 /* Driver program to test size function*/
 
@@ -151,4 +151,5 @@ int main() {
     }
     return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
