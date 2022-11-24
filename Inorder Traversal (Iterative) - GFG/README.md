@@ -1,7 +1,6 @@
 # Inorder Traversal (Iterative)
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary tree. Find the inorder traversal of the tree <strong>without using recursion</strong>.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary tree. Find the inorder traversal of the tree <strong>without using recursion</strong>.</span></p>
 
 <p><strong><span style="font-size:18px">Example 1</span></strong></p>
 
@@ -47,5 +46,4 @@ of </span><span style="font-size:18px">the tree is 1 7 10 8 6 10 5 6.</span></pr
 
 <div><span style="font-size:18px">1 &lt;= Number of nodes &lt;= 10<sup>5</sup><br>
 1 &lt;= Data of a node &lt;= 10<sup>5</sup></span></div>
- <p></p>
-            </div>
+</div>
