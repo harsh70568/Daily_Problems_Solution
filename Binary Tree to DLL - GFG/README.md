@@ -1,9 +1,8 @@
 # Binary Tree to DLL
-## Hard 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a Binary Tree (BT), convert it to a Doubly Linked List(DLL) In-Place. The left and right pointers in nodes are to be used as previous and next pointers respectively in converted DLL. The order of nodes in DLL must be same as Inorder of the given Binary Tree. The first node of Inorder traversal (leftmost node in BT) must be the head node of the DLL.</span></p>
+## Hard
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a Binary Tree (BT), convert it to a Doubly Linked List(DLL) In-Place. The left and right pointers in nodes are to be used as previous and next pointers respectively in converted DLL. The order of nodes in DLL must be same as Inorder of the given Binary Tree. The first node of Inorder traversal (leftmost node in BT) must be the head node of the DLL.</span></p>
 
-<p><span style="font-size:18px"><img alt="TreeToList" src="http://www.geeksforgeeks.org/wp-content/uploads/TreeToList.png" style="height:242px; width:432px" class="img-responsive"></span></p>
+<p><span style="font-size:18px"><img alt="TreeToList" src="http://www.geeksforgeeks.org/wp-content/uploads/TreeToList.png" style="height:242px; width:432px"></span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -41,5 +40,4 @@ Explanation: </strong> DLL would be
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ Number of nodes ≤ 10<sup>5</sup><br>
 0 ≤ Data of a node ≤ 10<sup>5</sup></span></p>
- <p></p>
-            </div>
+</div>
