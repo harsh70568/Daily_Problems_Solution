@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -87,7 +87,7 @@ Node* buildTree(string str)
 
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 /* Structure for tree and linked list
 
 struct Node
@@ -108,38 +108,38 @@ class Solution
 {
     public: 
     //Function to convert binary tree to doubly linked list and return it.
-    void solve(Node* root, Node* &dummy,Node* &curr)
+    void solve(Node* root, Node* &curr, Node* &prev)
     {
         if(root)
         {
-            solve(root->left,dummy,curr);
-            if(curr == NULL)
+            solve(root->left, curr, prev);
+            if(prev == NULL)
             {
-                dummy = root;
                 curr = root;
+                prev = root;
             }
             else
             {
-                curr->right = root;
-                curr->right->left = curr;
-                curr = curr->right;
+                prev->right = root;
+                prev->right->left = prev;
+                prev = root;
             }
-            solve(root->right,dummy,curr);
+            solve(root->right, curr, prev);
         }
     }
     Node * bToDLL(Node *root)
     {
         // your code here
         Node* curr = NULL;
-        Node* dummy = NULL;
-        solve(root,dummy,curr);
-        return dummy;
+        Node* prev = NULL;
+        solve(root, curr, prev);
+        return curr;
     }
 };
 
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 
 /* Function to print nodes in a given doubly linked list */
@@ -192,4 +192,5 @@ int main()
   return 0;
 }
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
