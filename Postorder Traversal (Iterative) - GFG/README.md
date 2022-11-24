@@ -1,7 +1,6 @@
 # Postorder Traversal (Iterative)
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary tree. Find the postorder traversal of the tree <strong>without using recursion</strong>.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary tree. Find the postorder traversal of the tree <strong>without using recursion</strong>.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1</strong></span></p>
 
@@ -52,5 +51,4 @@ of the tree is 10 7 1 6 10 6 5 8&nbsp;.</span></pre>
 
 <div><span style="font-size:18px">1 &lt;= Number of nodes &lt;= 10<sup>5</sup><br>
 1 &lt;= Data of a node &lt;= 10<sup>5</sup></span></div>
- <p></p>
-            </div>
+</div>
