@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -83,30 +83,30 @@ Node* buildTree(string str)
 }
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //Function to count number of nodes in BST that lie in the given range.
 class Solution{
 public:
-void solve(Node* root, int &count, int l, int h)
+void inorder(Node* root, int l, int h, int &count)
 {
-    if(root != NULL)
+    if(root)
     {
+        inorder(root->left, l, h, count);
         if(root->data >= l && root->data <= h) count++;
-        solve(root->left,count,l,h);
-        solve(root->right,count,l,h);
+        inorder(root->right, l, h, count);
     }
 }
     int getCount(Node *root, int l, int h)
     {
-      // your code goes here   
+      // your code goes here  
       int count = 0;
-      solve(root,count,l,h);
+      inorder(root, l, h, count);
       return count;
     }
 };
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -126,4 +126,5 @@ int main()
 	}
 	return 1;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
