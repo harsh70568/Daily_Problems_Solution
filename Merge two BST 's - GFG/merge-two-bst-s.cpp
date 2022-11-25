@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 #define MAX_HEIGHT 100000
@@ -85,7 +85,7 @@ Node* buildTree(string str)
 
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 /*
 struct Node {
     int data;
@@ -103,64 +103,29 @@ class Solution
     public:
     //Function to return a list of integers denoting the node 
     //values of both the BST in a sorted order.
-    vector<int> merge_them(vector<int> first, vector<int> second)
+    void inorder(Node* root, vector<int> &ans)
     {
-        int n = first.size();
-        int m = second.size();
-        vector<int> temp;
-        int i = 0;
-        int j = 0;
-        while(i < n && j < m)
+        if(root)
         {
-            if(first[i] < second[j])
-            {
-                temp.push_back(first[i]);
-                i++;
-            }
-            else
-            {
-                temp.push_back(second[j]);
-                j++;
-            }
+            inorder(root->left, ans);
+            ans.push_back(root->data);
+            inorder(root->right, ans);
         }
-        while(i < n)
-        {
-            temp.push_back(first[i]);
-            i++;
-        }
-        while(j < m)
-        {
-            temp.push_back(second[j]);
-            j++;
-        }
-        return temp;
-    }
-    void inorder(Node* root,vector<int> &ans)
-    {
-        
-       if(root != NULL)
-       {
-           inorder(root->left,ans);
-           ans.push_back(root->data);
-           inorder(root->right,ans);
-       }
-        
     }
     vector<int> merge(Node *root1, Node *root2)
     {
        //Your code here
-      vector<int> first;
-      vector<int> second;
-      inorder(root1,first);
-      inorder(root2,second);
-      
-      vector<int> ans = merge_them(first,second);
-      return ans;
+       vector<int> ans;
+       inorder(root1, ans);
+       inorder(root2, ans);
        
+       sort(ans.begin(), ans.end());
+       
+       return ans;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main() {
 
    int t;
@@ -185,4 +150,5 @@ int main() {
        ///cout<<"~"<<endl;
    }
    return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
