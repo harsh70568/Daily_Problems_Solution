@@ -1,7 +1,6 @@
 # Merge two BST 's
-## Hard 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given two BSTs, return elements of both BSTs in <strong>sorted </strong>form.</span></p>
+## Hard
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given two BSTs, return elements of both BSTs in <strong>sorted </strong>form.</span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -58,5 +57,4 @@ two BST we get 2 5 6 8 9 10 11 12.</span></pre>
 <p><br>
 <span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ Number of Nodes ≤ 10<sup>5</sup></span></p>
- <p></p>
-            </div>
+</div>
