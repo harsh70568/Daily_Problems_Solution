@@ -1,29 +1,30 @@
 class Solution {
 public:
-    int solve(int index, vector<vector<int>> &temp, vector<int> &start, vector<int> &dp)
+    int solve(int index, vector<vector<int>> &ans, vector<int> &startTime, vector<int> &dp)
     {
-        if(index >= temp.size()) return 0;
+        if(index >= ans.size()) return 0;
         
         if(dp[index] != -1) return dp[index];
         
-        int next_index = lower_bound(start.begin(),start.end(), temp[index][1]) - start.begin();
+        int next_idx = lower_bound(startTime.begin(), startTime.end(), ans[index][1]) - startTime.begin();
+        int not_pick = 0 + solve(index+1, ans, startTime, dp);
+        int pick = ans[index][2] + solve(next_idx, ans, startTime, dp);
         
-        int pick = temp[index][2] + solve(next_index, temp, start, dp);
-        int not_pick = 0 + solve(index+1, temp, start, dp);
         
-        return dp[index] = max(not_pick, pick);
+        return dp[index] = max(pick, not_pick);
     }
     int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
-        int n = startTime.size();
-        
-        vector<vector<int>> temp;
-        for(int i = 0; i < n; i++)
+        vector<vector<int>> ans;
+        int n = endTime.size();
+        for(int i = 0; i < startTime.size(); i++)
         {
-            temp.push_back({startTime[i], endTime[i], profit[i]});
+            ans.push_back({startTime[i], endTime[i], profit[i]});
         }
-        sort(temp.begin(),temp.end());
-        sort(startTime.begin(),startTime.end());
+        
+        sort(ans.begin(), ans.end());
+        sort(startTime.begin(), startTime.end());
+        
         vector<int> dp(n+1,-1);
-        return solve(0, temp, startTime, dp);
+        return solve(0, ans, startTime, dp);
     }
 };
