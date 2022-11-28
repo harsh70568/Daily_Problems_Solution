@@ -2,39 +2,40 @@ class Solution {
 public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
         vector<vector<int>> ans;
-        unordered_map<int, int> mp;
-        unordered_map<int, int> mpp;
         
+        
+        unordered_map<int, int> mpp;
         for(int i = 0; i < matches.size(); i++)
         {
-            mp[matches[i][0]]++;
             mpp[matches[i][1]]++;
-            
         }
+        
+        vector<int> winner;
         vector<int> loss;
-        vector<int> win;
-        
-        for(auto it : mpp)
+        set<int> s;
+        set<int> s2;
+        for(int i = 0; i < matches.size(); i++)
         {
-            if(it.second == 1)
+            if(mpp.find(matches[i][0]) == mpp.end() && s.find(matches[i][0]) == s.end())
             {
-                loss.push_back(it.first);
+                winner.push_back(matches[i][0]);
+                s.insert(matches[i][0]);
+            }
+            if(mpp[matches[i][1]] == 1 && s2.find(matches[i][1]) == s2.end())
+            {
+                loss.push_back(matches[i][1]);
+                s2.insert(matches[i][1]);
             }
         }
         
-        for(auto it : mp)
-        {
-            if(mpp.find(it.first) == mpp.end())
-            {
-                win.push_back(it.first);
-            }
-        }
         
-        sort(win.begin(), win.end());
+        sort(winner.begin(), winner.end());
         sort(loss.begin(), loss.end());
         
-        return {win,loss};
         
+        ans.push_back(winner);
+        ans.push_back(loss);
         
+        return ans;
     }
 };
