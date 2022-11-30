@@ -1,11 +1,11 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // C++ program to rearrange an array in minimum 
 // maximum form 
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution{
     public:
     // This function wants you to modify the given input
@@ -17,24 +17,32 @@ class Solution{
     { 
     	
     	// Your code here
-    	 vector<int> ans(n);
-    	 int i = 0;
-    	 int j = n-1;
-    	 int k = 0;
-    	 while(i <= j)
-    	 {
-    	       ans[k++] = arr[j--];
-    	     ans[k++] = arr[i++];
-    	   
-    	 }
-    	 for(int i = 0; i < ans.size(); i++)
-    	 {
-    	     arr[i] = ans[i];
-    	 }
+    	vector<int> ans(n);
+    	int i = 0;
+    	int j = n-1;
+    	
+    	int k = 0;
+    	while(i <= j)
+    	{
+    	    ans[k] = arr[j];
+    	    j--;
+    	    k++;
+    	    
+    	    ans[k] = arr[i];
+    	    i++;
+    	    k++;
+    	}
+    	
+    	
+    	for(int i = 0; i < n; i++)
+    	{
+    	    arr[i] = ans[i];
+    	}
+    	 
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 // Driver program to test above function 
 int main() 
@@ -70,4 +78,5 @@ int main()
     }
 	return 0; 
 } 
-  // } Driver Code Ends
+
+// } Driver Code Ends
