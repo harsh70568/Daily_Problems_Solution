@@ -34,7 +34,7 @@ public:
         int pick = INT_MIN;
         if(check(arr[index], temp) && length(arr[index]))
         {
-            pick = arr[index].length() + solve(index+1, arr, temp + arr[index]);
+            pick = arr[index].length() + solve(index+1, arr, temp += arr[index]);
         }
         
         return max(pick, not_pick);
