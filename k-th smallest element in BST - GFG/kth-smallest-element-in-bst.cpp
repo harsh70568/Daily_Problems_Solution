@@ -96,9 +96,9 @@ class Solution {
     // Return the Kth smallest element in the given BST
     int KthSmallestElement(Node *root, int K) {
         // add code here.
-        Node* curr = root;
-        stack<Node*> st;
         int count = 0;
+        stack<Node*> st;
+        Node* curr = root;
         while(!st.empty() || curr)
         {
             if(curr)
