@@ -4,16 +4,11 @@ public:
         map<int, int> mpp;
         int n = nums.size();
         int maxi = -1;
-        int elem = 0;
         
         for(int i = 0; i < nums.size(); i++)
         {
             mpp[nums[i]]++;
-            if(mpp[nums[i]] > maxi)
-            {
-                maxi = mpp[nums[i]];
-                elem = nums[i];
-            }
+            maxi = max(maxi, mpp[nums[i]]);
         }
         
         if(n - maxi <= 3) return 0;
