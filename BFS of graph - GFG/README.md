@@ -25,7 +25,7 @@ then 3.After this 2 to 4, thus bfs will be
 <strong>Explanation</strong>:
 0 is connected to 1 , 2.
 so starting from 0, it will go to 1 then 2,
-thus bfs will be 0 1 2 3 4. </span>
+thus bfs will be 0 1 2. </span>
 </pre>
 
 <p><br>
