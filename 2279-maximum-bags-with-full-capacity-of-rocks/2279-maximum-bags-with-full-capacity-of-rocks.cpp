@@ -1,31 +1,26 @@
 class Solution {
 public:
-    bool static harsh(const pair<int,int> &a, const pair<int,int> &b)
-    {
-        return ((a.first-a.second) < (b.first-b.second));
-    }
-    int maximumBags(vector<int>& capacity, vector<int>& rocks, int additionalRocks) {
-        vector<pair<int,int>> ans;
-        for(int i = 0; i < capacity.size(); i++)
+    int maximumBags(vector<int>& capacity, vector<int>& rocks, int add) {
+        vector<int> temp;
+        for(int i = 0; i < rocks.size(); i++)
         {
-            ans.push_back({capacity[i],rocks[i]});
+            temp.push_back(abs(capacity[i] - rocks[i]));
         }
         
-        sort(ans.begin(), ans.end(), harsh);
+        sort(temp.begin(), temp.end());
         
-        int count = 0;
-        for(auto it : ans)
+        //for(int i = 0; i < temp.size(); i++) cout<<temp[i]<<" ";
+        
+        int ans = 0;
+        for(int i = 0; i < temp.size(); i++)
         {
-            int diff = it.first-it.second;
+            if(add < temp[i]) return ans;
+            ans++;
+            add -= temp[i];
             
-            if(diff == 0) count++;
-            
-            else if(additionalRocks >= diff)
-            {
-                count++;
-                additionalRocks -= diff;
-            }
         }
-        return count;
+        return ans;
+        
+        
     }
 };
