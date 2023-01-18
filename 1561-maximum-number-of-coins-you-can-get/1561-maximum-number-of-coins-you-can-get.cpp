@@ -2,25 +2,17 @@ class Solution {
 public:
     int maxCoins(vector<int>& piles) {
         int n = piles.size();
-        sort(piles.begin(), piles.end());
+        n /= 3;
+        sort(piles.begin(), piles.end(), greater<int>());
         
-        int count = 0;
-        int sum = 0;
-        bool flag = false;
-        for(int i = 0; i < n; i++)
+        int i = 1;
+        int me = 0;
+        while(n--)
         {
-            if(flag)
-            {
-                sum += piles[i];
-                i++;
-            }
-            else
-            {
-                count++;
-                if(count == n/3) flag = true;
-            }
+            me += piles[i];
+            i += 2;
         }
+        return me;
         
-        return sum;
     }
 };
