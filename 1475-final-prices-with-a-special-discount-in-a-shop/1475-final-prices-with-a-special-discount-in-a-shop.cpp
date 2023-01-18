@@ -1,29 +1,20 @@
 class Solution {
 public:
-    vector<int> finalPrices(vector<int>& arr) {
-        int n = arr.size();
-        vector<int> ans(n);
-        stack<int> st;
-        st.push(arr[n-1]);
-        ans[n-1] = arr[n-1];
-        for(int i = n-2; i >= 0; i--)
+    vector<int> finalPrices(vector<int>& p) {
+        vector<int> ans(p.size());
+        for(int i = 0; i < p.size(); i++)
         {
-            while(!st.empty() && arr[i] < st.top())
+            int j;
+            for(j = i+1; j < p.size(); j++)
             {
-                st.pop();
+                if(p[j] <= p[i])
+                {
+                    break;
+                }
             }
-            
-            if(!st.empty())
-            {
-                ans[i] = arr[i] - st.top();
-            }
-            else
-            {
-                ans[i] = arr[i];
-            }
-            st.push(arr[i]);
+            if(j == p.size()) ans[i] = p[i];
+            else ans[i] = p[i] - p[j];
         }
-        
         
         return ans;
     }
