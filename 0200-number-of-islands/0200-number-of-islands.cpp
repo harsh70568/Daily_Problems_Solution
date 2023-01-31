@@ -1,21 +1,19 @@
 class Solution {
 public:
-    void dfs(int row, int col, vector<vector<char>> &grid, vector<vector<int>> &vis, vector<int> delRow, vector<int> delCol)
+    void dfs(int r, int c, vector<vector<int>> &vis, vector<vector<char>> &grid, vector<int> &dx, vector<int> &dy)
     {
-        vis[row][col] = 1;
+        vis[r][c] = 1;
         
-        int m = grid.size();
-        int n = grid[0].size();
         for(int i = 0; i < 4; i++)
         {
-            int new_r = row + delRow[i];
-            int new_c = col + delCol[i];
+            int new_i = r + dx[i];
+            int new_j = c + dy[i];
             
-            if(new_r >= 0 && new_r < m && new_c >= 0 && new_c < n)
+            if(new_i < grid.size() && new_i >= 0 && new_j < grid[0].size() && new_j >= 0)  // index valid
             {
-                if(vis[new_r][new_c] == 0 && grid[new_r][new_c] == '1')
+                if(grid[new_i][new_j] == '1' && vis[new_i][new_j] == 0)
                 {
-                    dfs(new_r, new_c, grid, vis, delRow, delCol);
+                    dfs(new_i, new_j, vis, grid, dx, dy);
                 }
             }
         }
@@ -23,11 +21,12 @@ public:
     int numIslands(vector<vector<char>>& grid) {
         int m = grid.size();
         int n = grid[0].size();
-        vector<vector<int>> vis(m, vector<int>(n,0));
         
+        
+        vector<vector<int>> vis(m, vector<int>(n,0));
         int cnt = 0;
-        vector<int> delRow = {+1, 0, -1, 0};
-        vector<int> delCol = {0, +1, 0, -1};
+        vector<int> dx = {-1, 0, +1, 0};
+        vector<int> dy = {0, +1, 0, -1};
         for(int i = 0; i < m; i++)
         {
             for(int j = 0; j < n; j++)
@@ -35,7 +34,7 @@ public:
                 if(grid[i][j] == '1' && vis[i][j] == 0)
                 {
                     cnt++;
-                    dfs(i, j, grid, vis, delRow, delCol);
+                    dfs(i, j, vis, grid, dx, dy);
                 }
             }
         }
