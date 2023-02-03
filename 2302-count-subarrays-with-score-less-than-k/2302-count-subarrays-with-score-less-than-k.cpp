@@ -14,14 +14,14 @@ public:
             score = sum*(j-i+1);
             while(score >= k)
             {
+                cnt += (n-j);
                 sum -= nums[i];
                 i++;
                 score = sum*(j-i+1);
             }
-            if(score < k) cnt += (j-i+1);
             j++;
         }
         
-        return cnt;
+        return 1LL*n*(n+1)/2 - cnt;
     }
 };
