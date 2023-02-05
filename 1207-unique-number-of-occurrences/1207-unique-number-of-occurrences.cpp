@@ -6,19 +6,12 @@ public:
         {
             mpp[it]++;
         }
-        set<int> s;
+        set<int> st;
         for(auto it : mpp)
         {
-            if(s.find(it.second) != s.end())
-            {
-                return false;
-            }
-            else
-            {
-                s.insert(it.second);
-            }
+            st.insert(it.second);
         }
         
-        return true;
+        return st.size() == mpp.size();
     }
 };
