@@ -15,7 +15,7 @@ public:
             if(s[i] == '*') prefix[i] = prefix[i-1] + 1;
             else prefix[i] = prefix[i-1];
         }
-        if(pos.size() == 0) return ans;
+        //if(pos.size() == 0) return ans;
         for(int i = 0; i < q.size(); i++)
         {
             int l = q[i][0];
