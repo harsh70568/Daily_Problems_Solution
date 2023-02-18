@@ -21,23 +21,23 @@ public:
 class Solution{
 public:
     ListNode *moveToFront(ListNode *head){
-        
-        if(head == NULL || head->next == NULL) return head;
+        if(head == NULL) return head;
         ListNode* curr = head;
-        ListNode* temp = NULL;
-        
-        while(curr->next)
+        while(curr->next != NULL)
         {
-            temp = curr;
             curr = curr->next;
         }
         
-        temp->next = NULL;
-        ListNode* new_node = new ListNode(curr->val);
-        new_node->next = head;
+        ListNode* temp = new ListNode(curr->val);
+        temp->next = head;
+        curr = temp;
+        while(curr->next->next != NULL)
+        {
+            curr = curr->next;
+        }
         
-        return new_node;
-        
+        curr->next = NULL;
+        return temp;
     }
 };
 
