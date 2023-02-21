@@ -50,7 +50,7 @@ public:
         
         while(head)
         {
-            if(head->data % 2 == 0) // even
+            if(head->data % 2 == 0)  // even data
             {
                 if(even == NULL)
                 {
@@ -62,8 +62,9 @@ public:
                     e->next = head;
                     e = e->next;
                 }
+                head = head->next;
             }
-            else // odd
+            else
             {
                 if(odd == NULL)
                 {
@@ -75,17 +76,26 @@ public:
                     o->next = head;
                     o = o->next;
                 }
+                head = head->next;
             }
-            head = head->next;
         }
         
-        if(e) e->next = odd;
-        if(o) o->next = NULL;
-        if(even) return even;
-        else return odd;
-        
-        
-        
+        if(e && o)
+        {
+            e->next = odd;
+            o->next = NULL;
+            return even;
+        }
+        else if(e)
+        {
+            e->next = NULL;
+            return even;
+        }
+        else
+        {
+            o->next = NULL;
+            return odd;
+        }
     }
 };
 
