@@ -11,21 +11,18 @@ class Solution{
         { 
             // code here 
             int i = 0;
-            int j = 0;
             int k = n-1;
+            int j = 0;
             
             while(i <= k && j < m)
             {
                 if(arr2[j] < arr1[i])
                 {
-                    swap(arr1[k], arr2[j]);
+                    swap(arr2[j], arr1[k]);
                     k--;
                     j++;
                 }
-                else
-                {
-                    i++;
-                }
+                else i++;
             }
             
             sort(arr1, arr1+n);
