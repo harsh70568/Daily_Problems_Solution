@@ -2,11 +2,12 @@ class Solution {
 public:
     bool solve(int index, vector<int> &nums, int n, vector<int> &dp)
     {
-        if(index >= n-1) return true;
+        if(index >= nums.size()-1) return true;
+        
         if(dp[index] != -1) return dp[index];
         
-        int max_jump = index + nums[index];
-        for(int i = index; i < min(max_jump, n); i++)
+        int max_jumps = index + nums[index];
+        for(int i = index; i < min(n, max_jumps); i++)
         {
             if(solve(i+1, nums, n, dp)) return dp[index] = true;
         }
