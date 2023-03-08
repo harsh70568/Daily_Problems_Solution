@@ -1,37 +1,47 @@
 class Solution {
 public:
-    bool is_possible(vector<int> &piles, int mid, int h)
+
+    int check(vector<int>piles , int h, int mid)
     {
-        long long  cnt = 0;
-        for(int i = 0; i < piles.size(); i++)
+         long long int count = 0 ;
+
+        for(int i=0;i<piles.size();i++)
         {
-            cnt += (piles[i] / mid*1LL);
-            if(piles[i] % mid != 0) cnt++;
+             count += (piles[i] / mid*1LL);
+             if(piles[i] % mid != 0) count++;
         }
-        
-        return cnt <= h;
+    
+        return count <= h;
     }
+
+
     int minEatingSpeed(vector<int>& piles, int h) {
-        int maxi = -1;
-        for(auto it : piles) maxi = max(maxi, it);
-        int low = 1;
-        int high = maxi;
-        
-        int ans = -1;
-        while(low <= high)
+        int n = piles.size();
+         if(n==1)
+         {
+             return ceil(piles[0]/(h*1.0)) ;
+         }
+        int l  =  1;
+        int r  =  INT_MIN;
+        for(int i=0;i<n;i++)
         {
-            int mid = (low + high) >> 1;
-            if(is_possible(piles, mid, h))
+            r = max(r,piles[i]);
+        } 
+        int ans  = -1;
+        while(l<=r)
+        {
+            int mid  =  (l+r) >> 1 ;
+
+            if(check(piles,h,mid))
             {
                 ans = mid;
-                high = mid - 1;
+                r = mid-1;  
             }
             else
             {
-                low = mid + 1;
+                l = mid+1;
             }
         }
-        
         return ans;
     }
 };
