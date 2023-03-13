@@ -1,51 +1,47 @@
 class Solution {
 public:
-    bool is_safe(int row, int col, vector<vector<char>> &board)
+    bool is_possible(int row, int col, vector<vector<char>> &temp, int n)
     {
-        int n = board.size();
         // column checking
         for(int i = row-1; i >= 0; i--)
         {
-            if(board[i][col] == 'Q') return false;
+            if(temp[i][col] == 'Q') return false;
         }
         
-        // left diagonal checking
-        for(int i = row-1, j = col-1; i >= 0 && j >= 0; i--,j--)
+        // left diagonal chakeing
+        for(int i = row-1, j = col-1; i >= 0 && j >= 0; i--, j--)
         {
-            if(board[i][j] == 'Q') return false;
+            if(temp[i][j] == 'Q') return false;
         }
         
         // right diagonal checking
-        for(int i = row-1, j = col+1; i >= 0 && j < n; i--,j++)
+        for(int i = row-1, j = col + 1; i >= 0 && j < n; i--, j++)
         {
-            if(board[i][j] == 'Q') return false;
+            if(temp[i][j] == 'Q') return false;
         }
         
         return true;
     }
-    int solve(int row, vector<vector<char>> &board, int n)
+    int total_ways(int row, vector<vector<char>> &temp, int n)
     {
-        if(row == n)
-        {
-            return 1;
-        }
+        if(row >= n) return 1;
         
         int ans = 0;
-        for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++)
         {
-            if(is_safe(row, i, board))
+            if(is_possible(row, j, temp, n))
             {
-                board[row][i] = 'Q';
-                ans += solve(row+1, board, n);
-                board[row][i] = '.';
+                temp[row][j] = 'Q';
+                ans += total_ways(row+1, temp, n);
+                temp[row][j] = '.';
             }
         }
         
         return ans;
     }
     int totalNQueens(int n) {
-        vector<vector<char>> grid(n, vector<char>(n,'.'));
+        vector<vector<char>> temp(n, vector<char>(n,'.'));
+        return total_ways(0, temp, n);
         
-        return solve(0, grid, n);
     }
 };
