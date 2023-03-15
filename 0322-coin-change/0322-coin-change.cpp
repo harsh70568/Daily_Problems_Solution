@@ -10,7 +10,7 @@ public:
         
         if(dp[index][amount] != -1) return dp[index][amount];
         
-        int pick = INT_MAX;
+        int pick = 1e9;
         if(coins[index] <= amount)
         {
             pick = 1 + solve(index, coins, amount  - coins[index], dp);
