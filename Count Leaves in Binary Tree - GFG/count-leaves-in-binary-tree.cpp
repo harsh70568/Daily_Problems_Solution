@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -94,6 +94,7 @@ int main()
     }
     return 0;
 }
+
 // } Driver Code Ends
 
 
@@ -113,19 +114,18 @@ struct Node
          10
       /      \ 
    20       30 */
-   void preorder(Node* root, int &count)
+   void solve(Node* root, int &count)
    {
-       if(root)
-       {
-           if(root->left == NULL && root->right == NULL) count++;
-           preorder(root->left,count);
-           preorder(root->right,count);
+       if(root){
+      if(root->left == NULL && root->right == NULL) count++;
+      solve(root->left, count);
+      solve(root->right, count);
        }
    }
 int countLeaves(Node* root)
 {
   // Your code here
-  int count = 0;
-  preorder(root,count);
-  return count;
+  int cnt = 0;
+  solve(root, cnt);
+  return cnt;
 }
