@@ -1,24 +1,22 @@
 class Solution {
 public:
-    int solve(int i, int j, string &s, string &t, vector<vector<int>> &dp)
+    int lcs(int i, int j, string &s1, string &s2, int n, vector<vector<int>> &dp)
     {
         if(i < 0 || j < 0) return 0;
-        
         if(dp[i][j] != -1) return dp[i][j];
-        if(s[i] == t[j])
-        {
-            return dp[i][j] = 1 + solve(i-1,j-1,s,t,dp);
-        }
         
-        return dp[i][j] = max(solve(i-1,j,s,t,dp),solve(i,j-1,s,t,dp));
+        if(s1[i] == s2[j]) return dp[i][j] = 1 + lcs(i-1, j-1, s1, s2, n, dp);
+        else return dp[i][j] = max(lcs(i, j-1, s1, s2, n, dp), lcs(i-1, j, s1, s2, n, dp));
     }
     int minInsertions(string s) {
-        string t = s;
-        reverse(t.begin(),t.end());
         int n = s.length();
-        vector<vector<int>> dp(n, vector<int>(n+1,-1));
-        int ans = solve(n-1,n-1,s,t,dp);
+        string s1 = s;
+        reverse(s1.begin(), s1.end());
         
-        return n - ans;
+        vector<vector<int>> dp(n+1, vector<int>(n+1,-1));
+        int len = lcs(n-1, n-1, s, s1, n, dp);
+        
+        return n - len;
+        
     }
 };
