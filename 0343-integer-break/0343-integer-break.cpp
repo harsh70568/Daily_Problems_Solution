@@ -1,32 +1,34 @@
 class Solution {
 public:
-   
-    int solve(int i, vector<int> &ans, int sum, vector<vector<int>> &dp)
+    int solve(int index, vector<int> &val, int n, vector<vector<int>> &dp)
     {
-        if(i == 0)
+        if(index == 0)
         {
-            if(sum % ans[i] == 0) return pow(ans[i],sum/ans[i]); 
+            if(val[0] <= n) return 1;
+            else return -1e9;
         }
         
-        if(dp[i][sum] != -1) return dp[i][sum];
+        if(dp[index][n] != -1) return dp[index][n];
         
-        int not_pick = solve(i-1, ans, sum, dp);
-        int pick = -1e9;
-        if(ans[i] <= sum)
+        int not_pick = solve(index-1, val, n, dp);
+        int pick = 1;
+        if(val[index] <= n)
         {
-            pick = ans[i]*solve(i, ans, sum - ans[i], dp);
+            pick = max(solve(index-1, val, n, dp), val[index] * solve(index, val, n - val[index], dp));
         }
         
-        return dp[i][sum] = max(pick, not_pick);
+        return dp[index][n] = max(pick, not_pick);
     }
     int integerBreak(int n) {
-        vector<int> ans;
-        for(int i = 1; i < n; i++)
+        vector<int> val;
+        for(int i = 1; i <= n-1; i++)
         {
-            ans.push_back(i);
+            val.push_back(i);
         }
+        
+        //for(auto it : val) cout<<it<<" ";
         vector<vector<int>> dp(n, vector<int>(n+1,-1));
-        return solve(n-2, ans, n, dp);
+        return solve(n-2, val, n, dp);
         
     }
 };
