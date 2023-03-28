@@ -17,7 +17,7 @@ public:
         if(root == NULL) return ans;
         q.push(root);
         
-        bool flag = true;
+        //bool flag = true;
         while(!q.empty())
         {
             int size = q.size();
@@ -31,10 +31,11 @@ public:
                 if(it->left) q.push(it->left);
                 if(it->right) q.push(it->right);
             }
-            if(flag) ans.push_back(temp);
-            else ans.push_back(temp);
+            //if(flag) ans.push_back(temp);
+            //else ans.push_back(temp);
             
-            flag = !flag;
+            ans.push_back(temp);
+            //flag = !flag;
         }
         reverse(ans.begin(), ans.end());
         return ans;
