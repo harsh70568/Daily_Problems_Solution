@@ -19,8 +19,7 @@ public:
         return solve(root1->left, root2->right) && solve(root1->right, root2->left);
     }
     bool isSymmetric(TreeNode* root) {
-        
+        if(root == NULL) return true;
         return solve(root->left, root->right);
-        
     }
 };
