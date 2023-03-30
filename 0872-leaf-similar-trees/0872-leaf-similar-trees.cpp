@@ -11,24 +11,21 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root, vector<int> &first)
+    void solve(TreeNode* root, vector<int> &ans)
     {
         if(root)
         {
-            inorder(root->left, first);
-            if(root->left == NULL && root->right == NULL)
-            {
-                first.push_back(root->val);
-            }
-            inorder(root->right, first);
+            if(root->left == NULL && root->right == NULL) ans.push_back(root->val);
+            solve(root->left, ans);
+            solve(root->right, ans);
         }
     }
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
-        vector<int> first;
-        vector<int> second;
-        inorder(root1, first);
-        inorder(root2, second);
+        vector<int> ans;
+        vector<int> temp;
+        solve(root1, ans);
+        solve(root2, temp);
         
-        return first == second;
+        return ans == temp;
     }
 };
