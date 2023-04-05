@@ -87,21 +87,21 @@ Node* buildTree(string str)
 //Function to count number of nodes in BST that lie in the given range.
 class Solution{
 public:
-void inorder(Node* root, int l, int h, int &count)
+void solve(Node* root, int low, int high, int &cnt)
 {
     if(root)
     {
-        inorder(root->left, l, h, count);
-        if(root->data >= l && root->data <= h) count++;
-        inorder(root->right, l, h, count);
+        solve(root->left, low, high, cnt);
+        if(root->data >= low && root->data <= high) cnt += 1;
+        solve(root->right, low, high, cnt);
     }
 }
     int getCount(Node *root, int l, int h)
     {
-      // your code goes here  
-      int count = 0;
-      inorder(root, l, h, count);
-      return count;
+      // your code goes here
+      int cnt = 0;
+      solve(root, l, h, cnt);
+      return  cnt;
     }
 };
 
