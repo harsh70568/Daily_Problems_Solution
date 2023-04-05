@@ -100,9 +100,11 @@ class Solution
     int kthLargest(Node *root, int K)
     {
         //Your code here
-        Node* curr = root;
         stack<Node*> st;
-        int count = 0;
+        st.push(root);
+        Node* curr = root;
+        
+        int cnt = 0;
         while(!st.empty() || curr)
         {
             if(curr)
@@ -115,10 +117,10 @@ class Solution
                 curr = st.top();
                 st.pop();
                 
-                count++;
-                if(count == K) return curr->data;
-                
+                cnt++;
+                if(cnt == K) return curr->data;
                 curr = curr->left;
+                
             }
         }
         
