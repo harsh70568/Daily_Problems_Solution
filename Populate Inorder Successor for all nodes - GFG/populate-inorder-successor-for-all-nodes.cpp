@@ -125,28 +125,28 @@ struct Node
 class Solution
 {
 public:
-     void inorder(Node* root, Node* &prev)
-     {
-         if(root)
-         {
-             inorder(root->left, prev);
-             if(prev == NULL)
-             {
-                 prev = root;
-             }
-             else
-             {
-                 prev->next = root;
-                 prev = root;
-             }
-             inorder(root->right, prev);
-         }
-     }
+void inorder(Node* root, vector<Node*> &in_trav)
+{
+    if(root)
+    {
+        inorder(root->left, in_trav);
+        in_trav.push_back(root);
+        inorder(root->right, in_trav);
+    }
+}
     void populateNext(Node *root)
     {
         //code here
-        Node* prev = NULL;
-        inorder(root, prev);
+        vector<Node*> in_trav;
+        inorder(root, in_trav);
+        
+        for(int i = 0; i < in_trav.size()-1; i++)
+        {
+            in_trav[i]->next = in_trav[i+1];
+        }
+        
+        in_trav[in_trav.size()-1]->next = NULL;
+        
     }
 };
 
