@@ -114,16 +114,17 @@ class Solution{
     {
         //Your code here
         Node* ans = NULL;
-        while(root){
+        while(root)
+        {
             if(root->data > x->data)
-        {
-            ans = root;
-            root = root->left;
-        }
-        else
-        {
-            root = root->right;
-        }
+            {
+                ans = root;
+                root = root->left;
+            }
+            else
+            {
+                root = root->right;
+            }
         }
         
         return ans;
