@@ -8,6 +8,13 @@ struct Node
     int data;
     Node* left;
     Node* right;
+    Node(){
+	    left = right = NULL;
+	}
+    Node(int x){
+        data = x;
+        left = right = NULL;
+    }
 };
 
 // Utility function to create a new Tree Node
@@ -108,15 +115,15 @@ class Solution
 {
     public: 
     //Function to convert binary tree to doubly linked list and return it.
-    void solve(Node* root, Node* &curr, Node* &prev)
+    void solve(Node* root, Node* &prev, Node* &curr)
     {
         if(root)
         {
-            solve(root->left, curr, prev);
+            solve(root->left, prev, curr);
             if(prev == NULL)
             {
-                curr = root;
                 prev = root;
+                curr = root;
             }
             else
             {
@@ -124,15 +131,15 @@ class Solution
                 prev->right->left = prev;
                 prev = root;
             }
-            solve(root->right, curr, prev);
+            solve(root->right, prev, curr);
         }
     }
     Node * bToDLL(Node *root)
     {
         // your code here
-        Node* curr = NULL;
         Node* prev = NULL;
-        solve(root, curr, prev);
+        Node* curr = NULL;
+        solve(root, prev, curr);
         return curr;
     }
 };
