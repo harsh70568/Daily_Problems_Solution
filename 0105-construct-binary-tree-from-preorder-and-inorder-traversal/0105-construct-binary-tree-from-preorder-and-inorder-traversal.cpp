@@ -11,29 +11,26 @@
  */
 class Solution {
 public:
-    int ps = 0;
-    TreeNode* solve(vector<int> &pre, vector<int> &in, int left, int right)
+    TreeNode* solve(vector<int> &pre, vector<int> &in, int ps, int pe, int is, int ie, map<int, int> &mpp)
     {
-        if(left > right) return NULL;
+        if(ps > pe || is > ie) return NULL;
         
-        TreeNode* root = new TreeNode(pre[ps++]);
+        TreeNode* root = new TreeNode(pre[ps]);
+        int idx = mpp[root->val];
+        int skip = idx - is;
         
-        int idx = 0;
-        for(int i = 0; i < in.size(); i++)
-        {
-            if(in[i] == root->val)
-            {
-                idx = i;
-                break;
-            }
-        }
-        
-        root->left = solve(pre, in, left, idx-1);
-        root->right = solve(pre, in, idx+1, right);
+        root->left = solve(pre, in, ps+1, ps+skip, is, idx-1, mpp);
+        root->right = solve(pre, in, ps+skip+1, pe, idx+1, ie, mpp);
         
         return root;
     }
-    TreeNode* buildTree(vector<int>& pre, vector<int>& in) {
-        return solve(pre, in, 0, in.size()-1);
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        map<int, int> mpp;
+        for(int i = 0; i < inorder.size(); i++)
+        {
+            mpp[inorder[i]] = i;
+        }
+        
+        return solve(preorder, inorder, 0, preorder.size()-1, 0, inorder.size()-1, mpp);
     }
 };
