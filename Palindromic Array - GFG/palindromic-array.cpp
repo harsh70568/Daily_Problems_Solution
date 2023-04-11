@@ -6,27 +6,33 @@ using namespace std;
 
 // } Driver Code Ends
 /*Complete the function below*/
-#include<bits/stdc++.h>
+
 class Solution {
 public:
-bool is_palindrome(string a)
+bool is_pal(int num)
 {
-    string b = a;
-    reverse(b.begin(), b.end());
+    string str = to_string(num);
+    int i = 0;
+    int j = str.length()-1;
     
-    return a == b;
+    while(i <= j)
+    {
+        if(str[i] != str[j]) return false;
+        i++;
+        j--;
+    }
     
+    return true;
 }
     int PalinArray(int a[], int n)
     {
     	// code here
-    	
     	for(int i = 0; i < n; i++)
     	{
-    	    if(!is_palindrome(to_string(a[i]))) return 0;
+    	    if(is_pal(a[i]) == false) return false;
     	}
     	
-    	return 1;
+    	return true;
     }
 };
 
