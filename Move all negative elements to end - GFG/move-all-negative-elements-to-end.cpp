@@ -5,23 +5,35 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
     public:
+    static bool cmp(pair<int, int> &a, pair<int, int> &b)
+    {
+        if(a.first > 0 && b.first > 0)
+        {
+            return a.second < b.second;
+        }
+        else if(a.first < 0 && b.first < 0)
+        {
+            return a.second < b.second;
+        }
+        else
+        {
+            return a.first > b.first;
+        }
+    }
     void segregateElements(int arr[],int n)
     {
         // Your code goes here
-        vector<int> ans;
+        vector<pair<int, int>> temp;
         for(int i = 0; i < n; i++)
         {
-            if(arr[i] > 0) ans.push_back(arr[i]);
+            temp.push_back({arr[i], i});
         }
+        
+        sort(temp.begin(), temp.end(), cmp);
         
         for(int i = 0; i < n; i++)
         {
-            if(arr[i] < 0) ans.push_back(arr[i]);
-        }
-        
-        for(int i = 0; i < n; i++)
-        {
-            arr[i] = ans[i];
+            arr[i] = temp[i].first;
         }
     }
 };
