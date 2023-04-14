@@ -11,37 +11,39 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root, vector<int> &ans, vector<TreeNode*> &node)
+    void solve(TreeNode* root, int &index, vector<int> &inorder)
     {
         if(root)
         {
-            inorder(root->left, ans, node);
+            solve(root->left, index, inorder);
+            root->val = inorder[index++];
+            solve(root->right, index, inorder);
+        }
+    }
+    void inorder(TreeNode* root, vector<int> &ans)
+    {
+        if(root)
+        {
+            inorder(root->left, ans);
             ans.push_back(root->val);
-            node.push_back(root);
-            inorder(root->right,ans, node);
+            inorder(root->right, ans);
         }
     }
     TreeNode* bstToGst(TreeNode* root) {
-        if(root == NULL) return 0;
         vector<int> ans;
-        vector<TreeNode*> node;
-        inorder(root,ans,node);
+        inorder(root, ans);
         
         int n = ans.size();
-        
-        vector<int> temp(n);
-        temp[n-1] = ans[n-1];
-        
         for(int i = n-2; i >= 0; i--)
         {
-            temp[i] = ans[i] + temp[i+1];
+            ans[i] = ans[i] + ans[i+1];
         }
         
-        for(int i = 0; i < n; i++)
-        {
-            node[i]->val = temp[i];
-        }
+        //for(auto it : ans) cout<<it<<" ";
+        //cout<<"harsh";
         
+        int i = 0;
+        solve(root, i, ans);
         return root;
     }
 };
