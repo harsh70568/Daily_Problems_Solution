@@ -11,18 +11,33 @@
  */
 class Solution {
 public:
-    TreeNode* solve(int mini, int maxi, vector<int> preorder, int &i)
+    int ps = 0;
+    TreeNode* solve(vector<int> &preorder, vector<int> &inorder, int left, int right)
     {
-        if(preorder.size() <= i) return NULL;
-        if(preorder[i] <= mini || preorder[i] >= maxi) return NULL;
-        TreeNode* root = new TreeNode(preorder[i++]);
-        root->left = solve(mini,root->val,preorder,i);
-        root->right = solve(root->val,maxi,preorder,i);
+        if(left > right) return NULL;
+        
+        TreeNode* root = new TreeNode(preorder[ps++]);
+        int idx = -1;
+        for(int i = 0; i < inorder.size(); i++)
+        {
+            if(inorder[i] == root->val)
+            {
+                idx = i;
+                break;
+            }
+        }
+        
+        root->left = solve(preorder, inorder, left, idx-1);
+        root->right = solve(preorder, inorder, idx+1, right);
+        
         return root;
     }
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        int i = 0;
-        return solve(INT_MIN,INT_MAX,preorder,i);
-        //return root;
+        vector<int> inorder = preorder;
+        
+        sort(inorder.begin(), inorder.end());
+        
+        return solve(preorder, inorder, 0, inorder.size()-1);
+        
     }
 };
