@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for C++
 
 #include<bits/stdc++.h>
@@ -93,43 +93,38 @@ void inorder(struct Node* root)
 }
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function Template for C++
 
 class Solution
 {
     public:
-    void preorder(Node* root, vector<int> &ans)
+    void solve(Node* root, vector<Node*> &ans)
     {
         if(root)
         {
-            ans.push_back(root->key);
-            preorder(root->left,ans);
-            preorder(root->right,ans);
+            ans.push_back(root);
+            solve(root->left, ans);
+            solve(root->right, ans);
         }
     }
     void flatten(Node *root)
     {
         //code here
-        vector<int> ans;
-        preorder(root,ans);
+        vector<Node*> ans;
+        solve(root, ans);
         
-        root->left = NULL;
-        root->right = NULL;
-        
-        Node* curr = root;
-        for(int i = 1; i < ans.size(); i++)
+        for(int i = 0; i < ans.size()-1; i++)
         {
-            Node* temp = newNode(ans[i]);
-            curr->left = NULL;
-            curr->right = temp;
-            curr = curr->right;
+            ans[i]->left = NULL;
+            ans[i]->right = ans[i+1];
         }
-        return;
+        ans[ans.size()-1]->left = NULL;
+        ans[ans.size()-1]->right = NULL;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main() {
 
     int t;
@@ -153,4 +148,5 @@ int main() {
 
 	return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
