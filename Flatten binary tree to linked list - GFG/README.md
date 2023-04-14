@@ -1,7 +1,11 @@
 # Flatten binary tree to linked list
-## Hard 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary tree, flatten it into linked list in-place. Usage of auxiliary data structure is not allowed. After flattening, left of each node should point to NULL and right should contain next node in preorder.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given the root of a binary tree, flatten the tree into a "linked list":</span></p>
+
+<ul>
+	<li><span style="font-size:18px">The "linked list" should use the same Node class where the right child pointer points to the next&nbsp; &nbsp;node in the list and the left child pointer is always null.</span></li>
+	<li><span style="font-size:18px">The "linked list" should be in the same order as a pre-order traversal of the binary tree.</span></li>
+</ul>
 
 <p><strong><span style="font-size:18px">Example 1:</span></strong></p>
 
@@ -82,5 +86,4 @@ is 1 3 4 2 5.</span></pre>
 <div><span style="font-size:18px">1&lt;=n&lt;=10^5</span></div>
 
 <div>&nbsp;</div>
- <p></p>
-            </div>
+</div>
