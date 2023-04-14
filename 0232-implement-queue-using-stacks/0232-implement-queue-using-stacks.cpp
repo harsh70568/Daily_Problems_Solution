@@ -3,25 +3,22 @@ public:
     stack<int> st1;
     stack<int> st2;
     MyQueue() {
+        
     }
     
     void push(int x) {
-        if(st2.empty()) st2.push(x);
-        else
-        {
         while(!st2.empty())
         {
             st1.push(st2.top());
             st2.pop();
         }
-            
-            st2.push(x);
-            
-            while(!st1.empty())
-            {
-                st2.push(st1.top());
-                st1.pop();
-            }
+        
+        st2.push(x);
+        
+        while(!st1.empty())
+        {
+            st2.push(st1.top());
+            st1.pop();
         }
     }
     
@@ -38,11 +35,14 @@ public:
     
     int peek() {
         if(st2.empty()) return -1;
-        else return st2.top();
+        else
+        {
+            return st2.top();
+        }
     }
     
     bool empty() {
-        return st2.empty() ? 1 : 0;
+        return st2.empty();
     }
 };
 
