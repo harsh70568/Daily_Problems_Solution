@@ -1,19 +1,21 @@
 class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
+        map<int, int> mpp;
         int i = 0;
         int j = 0;
-        int max_len = 1;
-        map<int, int> mpp;
+        
+        int max_len = 0;
         while(j < fruits.size())
         {
             mpp[fruits[j]]++;
-            if(mpp.size() <= 2)
+            
+            if(mpp.size() <= 2) // having less than 2 distinct fruits
             {
                 max_len = max(max_len, j-i+1);
                 j++;
             }
-            else if(mpp.size() > 2)
+            else
             {
                 while(mpp.size() > 2)
                 {
