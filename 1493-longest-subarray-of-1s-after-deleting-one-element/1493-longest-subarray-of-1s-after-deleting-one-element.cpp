@@ -4,32 +4,28 @@ public:
         int i = 0;
         int j = 0;
         
-        int max_len = 1;
-        unordered_map<int,int> mpp;
+        int zero_cnt = 0;
+        int max_len = 0;
         while(j < nums.size())
         {
-            mpp[nums[j]]++;
-            if(mpp[0] <= 1)
+            if(nums[j] == 0) zero_cnt++;
+            
+            if(zero_cnt <= 1)
             {
-                max_len = max(max_len, j-i+1);
+                max_len = max(max_len, j-i);  // j-i so, because exactly one eleement need to be deleted
                 j++;
             }
-            // else if(mpp[0] == 1)
-            // {
-            //     max_len = max(max_len, j-i);
-            //     j++;
-            // }
             else
             {
-                while(mpp[0] != 1)
+                while(zero_cnt > 1)
                 {
-                    mpp[nums[i]]--;
+                    if(nums[i] == 0) zero_cnt--;
                     i++;
                 }
                 j++;
             }
         }
         
-        return max_len-1;
+        return max_len;
     }
 };
