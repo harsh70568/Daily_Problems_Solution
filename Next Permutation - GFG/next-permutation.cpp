@@ -9,9 +9,9 @@ using namespace std;
 
 class Solution{
 public:
-    vector<int> nextPermutation(int n, vector<int> arr){
-        // code here
-        int i,j;
+    vector<int> nextPermutation(int N, vector<int> arr){
+        int n = arr.size();
+        int i;
         for(i = n-2; i >= 0; i--)
         {
             if(arr[i] < arr[i+1])
@@ -20,21 +20,27 @@ public:
             }
         }
         
-        
-        if(i < 0){reverse(arr.begin(), arr.end());
-        return arr;
-        }
-        
-        for(j = n-1; j > i; j--)
+        if(i < 0)
         {
-            if(arr[j] > arr[i]) break;
+            reverse(arr.begin(), arr.end());
+            return arr;
         }
-        
-        swap(arr[i], arr[j]);
-        
-        reverse(arr.begin()+i+1, arr.end());
-        
-        return arr;
+        else
+        {
+            int j;
+            for(j = n-1; j > i; j--)
+            {
+                if(arr[j] > arr[i])
+                {
+                    break;
+                }
+            }
+            
+            swap(arr[i], arr[j]);
+            sort(arr.begin()+i+1, arr.end());
+            
+            return arr;
+        }
     }
 };
 
