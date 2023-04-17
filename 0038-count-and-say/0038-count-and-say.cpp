@@ -8,8 +8,8 @@ public:
         for(int i = 3; i <= n; i++)
         {
             string t = "";
-            s += '&';
             int count = 1;
+            s += '&';
             
             for(int j = 1; j < s.length(); j++)
             {
