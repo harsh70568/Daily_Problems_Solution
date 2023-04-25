@@ -1,9 +1,11 @@
 class Solution {
 public:
+    // we just need to find the one pair whose gcd is 1, that will automatically make every other element 1
     int minOperations(vector<int>& nums) {
         int n = nums.size();
         int mini = 1e9;
         int g = 0;
+        // prefix 
         for(int i = 0; i < nums.size(); i++)
         {
             g = __gcd(g, nums[i]);
@@ -35,6 +37,7 @@ public:
         }
         
         reverse(nums.begin(), nums.end());
+        // suffix
         g = 0;
         for(int i = 0; i < nums.size(); i++)
         {
