@@ -8,9 +8,9 @@ public:
     int maxVowels(string s, int k) {
         int i = 0;
         int j = 0;
+        
         int maxi = 0;
         int cnt = 0;
-        
         while(j < s.length())
         {
             if(is_vowel(s[j]))
@@ -18,17 +18,11 @@ public:
                 cnt++;
             }
             
-            if(j-i+1 < k)
-            {
-                j++;
-            }
+            if(j-i+1 < k) j++;
             else if(j-i+1 == k)
             {
                 maxi = max(maxi, cnt);
-                if(is_vowel(s[i]))
-                {
-                    cnt--;
-                }
+                if(is_vowel(s[i])) cnt--;
                 i++;
                 j++;
             }
