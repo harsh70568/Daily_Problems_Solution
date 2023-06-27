@@ -14,6 +14,7 @@ public:
         ListNode* p = head;
         ListNode* q = NULL;
         ListNode* r = NULL;
+        
         while(p)
         {
             r = q;
