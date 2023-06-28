@@ -12,39 +12,49 @@ class Solution {
 public:
     int length(ListNode* head)
     {
-        int count = 0;
+        int cnt = 0;
         while(head)
         {
-            count++;
-            head = head->next;
+            cnt++;
+           head = head->next;
         }
-        
-        return count;
+        return cnt;
     }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* first = l1;
+        ListNode* f = l1;
+    
+        ListNode* second = l2;
+        ListNode* s = l2;
         int len1 = length(l1);
         int len2 = length(l2);
         
         if(len2 > len1)
         {
-            ListNode* temp = l1;
-            l1 = l2;
-            l2 = temp;
+            first = l2;
+            f = l2;
+            second = l1;
+            s = l1;
         }
         
+        int fd = 0;
+        int sd = 0;
         int carry = 0;
-        int val;
-        ListNode* head = l1;
         ListNode* prev = NULL;
-        while(l1 || l2)
+        while(first)
         {
-            val = l1->val + carry;
-            if(l2) val += l2->val;
-            l1->val = val%10;
+            if(first) fd = first->val;
+            else fd = 0;
+            if(second) sd = second->val;
+            else sd = 0;
+            
+            int val = fd + sd + carry;
+            first->val = val % 10;
             carry = val / 10;
-            prev = l1;
-            l1 = l1->next;
-            if(l2) l2 = l2->next;
+            
+            prev = first;
+            first = first->next;
+            if(second) second = second->next;
         }
         
         if(carry == 1)
@@ -53,6 +63,7 @@ public:
             prev->next = new_node;
         }
         
-        return head;
+        return f;
+        
     }
 };
