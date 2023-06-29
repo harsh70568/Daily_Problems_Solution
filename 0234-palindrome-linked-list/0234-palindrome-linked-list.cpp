@@ -15,6 +15,7 @@ public:
         ListNode* p = head;
         ListNode* q = NULL;
         ListNode* r = NULL;
+        
         while(p)
         {
             r = q;
@@ -30,6 +31,7 @@ public:
         ListNode* prev = NULL;
         ListNode* slow = head;
         ListNode* fast = head;
+        
         while(fast && fast->next)
         {
             prev = slow;
@@ -38,12 +40,13 @@ public:
         }
         
         prev->next = NULL;
-        slow = reverse(slow);
-        while(head != NULL && slow != NULL)
+        ListNode* head2 = reverse(slow);
+        
+        while(head && head2)
         {
-            if(head->val != slow->val) return false;
+            if(head->val != head2->val) return false;
             head = head->next;
-            slow = slow->next;
+            head2 = head2->next;
         }
         
         return true;
