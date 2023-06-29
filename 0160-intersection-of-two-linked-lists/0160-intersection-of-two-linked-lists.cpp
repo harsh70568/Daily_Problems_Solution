@@ -10,47 +10,40 @@ class Solution {
 public:
     int length(ListNode* head)
     {
-        int c = 0;
+        int cnt = 0;
         while(head)
         {
-            c++;
+            cnt++;
             head = head->next;
         }
-        
-        return c;
+        return cnt;
     }
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         int len1 = length(headA);
         int len2 = length(headB);
         
-        ListNode* first = NULL;
-        ListNode* second = NULL;
-        int diff = abs(len1 - len2);
-        if(len1 >= len2)
+        int d = abs(len1 - len2);
+        
+        if(len1 > len2)
         {
-            first = headA;
-            second = headB;  
+            while(d--)
+            {
+                headA = headA->next;
+            }
         }
         else
         {
-            first = headB;
-            second = headA;
-        }
-        
-        while(diff--)
-        {
-            first = first->next;
-        }
-        
-        //cout<<first->val<<" "<<second->val<<endl;
-        while(first && second)
-        {
-            if(first == second)
+            while(d--)
             {
-                return first;
+                headB = headB->next;
             }
-            first = first->next;
-            second = second->next;
+        }
+        
+        while(headA && headB)
+        {
+            if(headA == headB) return headA;
+            headA = headA->next;
+            headB = headB->next;
         }
         
         return NULL;
