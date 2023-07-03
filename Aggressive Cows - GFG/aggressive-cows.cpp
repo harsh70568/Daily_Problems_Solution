@@ -11,27 +11,30 @@ class Solution {
 public:
     bool is_possible(vector<int> &stalls, int mid, int k)
     {
+        int n = stalls.size();
         int cnt = 1;
-        int prev = stalls[0];
-        for(int i = 1; i < stalls.size(); i++)
+        int pos = stalls[0];
+        
+        int i = 1;
+        while(i < n)
         {
-            if(stalls[i] - prev >= mid)
+            if(stalls[i] - pos >= mid)
             {
                 cnt++;
-                prev = stalls[i];
+                pos = stalls[i];
             }
+            i++;
         }
         
         return cnt >= k;
     }
     int solve(int n, int k, vector<int> &stalls) {
     
-        // Write your code here
+        int low = 0;
         sort(stalls.begin(), stalls.end());
-        int low = 1;
         int high = stalls[n-1] - stalls[0];
         
-        int ans = -1;
+        int ans = 0;
         while(low <= high)
         {
             int mid = (low + high) >> 1;
@@ -45,9 +48,9 @@ public:
                 high = mid - 1;
             }
         }
-        
         return ans;
     }
+    
 };
 
 //{ Driver Code Starts.
