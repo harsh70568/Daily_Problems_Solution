@@ -11,12 +11,12 @@
  */
 class Solution {
 public:
-    bool solve(TreeNode* f, TreeNode* s)
+    bool solve(TreeNode* root1, TreeNode* root2)
     {
-        if(f == NULL || s == NULL) return (f == s);
-        if(f->val != s->val) return false;
+        if(root1 == NULL || root2 == NULL) return root1 == root2;
+        if(root1->val != root2->val) return false;
         
-        return solve(f->left, s->left) && solve(f->right, s->right);
+        return solve(root1->left, root2->left) && solve(root1->right, root2->right);
     }
     bool isSameTree(TreeNode* p, TreeNode* q) {
         return solve(p, q);
