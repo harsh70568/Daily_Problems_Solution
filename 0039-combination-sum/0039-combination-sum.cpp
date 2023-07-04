@@ -1,8 +1,13 @@
 class Solution {
 public:
-    void solve(int index, int target, vector<vector<int>> &ans, vector<int> &temp, vector<int> &candidate)
+    void solve(int index, vector<int> &candidates, vector<int> &temp, int target, vector<vector<int>> &ans)
     {
-        if(index >= candidate.size())
+        if(target == 0)
+        {
+            ans.push_back(temp);
+            return;
+        }
+        if(index == -1)
         {
             if(target == 0)
             {
@@ -11,20 +16,20 @@ public:
             return;
         }
         
-        if(candidate[index] <= target)
+        solve(index-1, candidates, temp, target, ans);
+        if(candidates[index] <= target)
         {
-            temp.push_back(candidate[index]);
-            solve(index, target - candidate[index], ans, temp, candidate);
+            temp.push_back(candidates[index]);
+            solve(index, candidates, temp, target - candidates[index], ans);
             temp.pop_back();
         }
-        
-        solve(index+1, target, ans, temp, candidate);
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         vector<vector<int>> ans;
         vector<int> temp;
         
-        solve(0, target, ans, temp, candidates);
+        int n = candidates.size();
+        solve(n-1, candidates, temp, target, ans);
         return ans;
     }
 };
