@@ -1,47 +1,38 @@
 class Solution {
 public:
-    bool is_possible(int row, int col, vector<vector<char>> &temp, int n)
+    bool is_possible(int i, int j, vector<vector<char>> &arr, int n)
     {
-        // column checking
-        for(int i = row-1; i >= 0; i--)
-        {
-            if(temp[i][col] == 'Q') return false;
-        }
-        
-        // left diagonal chakeing
-        for(int i = row-1, j = col-1; i >= 0 && j >= 0; i--, j--)
-        {
-            if(temp[i][j] == 'Q') return false;
-        }
-        
-        // right diagonal checking
-        for(int i = row-1, j = col + 1; i >= 0 && j < n; i--, j++)
-        {
-            if(temp[i][j] == 'Q') return false;
-        }
+        // for column
+        for(int r = i-1; r >= 0; r--) if(arr[r][j] == 'Q') return false;
+        // for row
+        for(int c = j-1; c >= 0; c--) if(arr[i][c] == 'Q') return false;
+        // for left diagonal
+        for(int r = i-1, c = j-1; r >= 0 && c >= 0; r--, c--) if(arr[r][c] == 'Q') return false;
+        // for right diagonal
+        for(int r = i-1, c = j+1; r >= 0 && c < n; r--, c++) if(arr[r][c] == 'Q') return false;
         
         return true;
     }
-    int total_ways(int row, vector<vector<char>> &temp, int n)
+    
+    int solve(int i, vector<vector<char>> &arr, int n)
     {
-        if(row >= n) return 1;
+        if(i == n) return 1;
         
-        int ans = 0;
+        int cnt = 0;
         for(int j = 0; j < n; j++)
         {
-            if(is_possible(row, j, temp, n))
+            if(is_possible(i, j, arr, n) == false) continue;
+            else
             {
-                temp[row][j] = 'Q';
-                ans += total_ways(row+1, temp, n);
-                temp[row][j] = '.';
+                arr[i][j] = 'Q';
+                cnt += solve(i+1, arr, n);
+                arr[i][j] = '.';
             }
         }
-        
-        return ans;
+        return cnt;
     }
     int totalNQueens(int n) {
-        vector<vector<char>> temp(n, vector<char>(n,'.'));
-        return total_ways(0, temp, n);
-        
+        vector<vector<char>> arr(n, vector<char>(n,'.'));
+        return solve(0, arr, n);
     }
 };
