@@ -15,12 +15,13 @@ public:
     {
         if(root == NULL) return 0;
         
-        int l = solve(root->left, flag);
-        int r = solve(root->right, flag);
-        if(abs(l-r) > 1) flag = false;
+        int left = solve(root->left, flag);
+        int right = solve(root->right, flag);
+        if(abs(left-right) > 1) flag = false;
         
-        return max(l, r) + 1;
+        return max(left, right) + 1;
     }
+    
     bool isBalanced(TreeNode* root) {
         bool flag = true;
         solve(root, flag);
