@@ -1,31 +1,33 @@
 class Solution {
 public:
     int longestSubarray(vector<int>& nums) {
+        int cnt = 0;
         int i = 0;
         int j = 0;
         
-        int zero_cnt = 0;
-        int max_len = 0;
+        int maxi = 0;
         while(j < nums.size())
         {
-            if(nums[j] == 0) zero_cnt++;
-            
-            if(zero_cnt <= 1)
+            if(nums[j] == 0)
             {
-                max_len = max(max_len, j-i);  // j-i so, because exactly one eleement need to be deleted
+                cnt++;
+            }
+            
+            if(cnt <= 1)
+            {
+                maxi = max(maxi, j-i);
                 j++;
             }
             else
             {
-                while(zero_cnt > 1)
+                while(cnt > 1)
                 {
-                    if(nums[i] == 0) zero_cnt--;
+                    if(nums[i] == 0) cnt--;
                     i++;
                 }
                 j++;
             }
         }
-        
-        return max_len;
+        return maxi;
     }
 };
