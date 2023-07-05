@@ -1,7 +1,6 @@
 # Largest subarray with 0 sum
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array having both positive and negative integers. The task is to compute the&nbsp;length of the largest subarray with sum 0.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array having both positive and negative integers. The task is to compute the&nbsp;length of the largest subarray with sum 0.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -21,5 +20,4 @@ You just have to complete the function <strong>maxLen() </strong>which<strong>&n
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 &lt;= N &lt;= 10<sup>5</sup><br>
 -1000 &lt;= A[i] &lt;= 1000, for each valid i</span></p>
- <p></p>
-            </div>
+</div>
