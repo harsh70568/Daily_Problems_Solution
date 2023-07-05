@@ -1,11 +1,11 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 /*You are required to complete this function*/
 
 class Solution{
@@ -13,34 +13,34 @@ class Solution{
     int maxLen(vector<int>&A, int n)
     {   
         // Your code here
-        int sum = 0;
-        int max_length = 0;
-        unordered_map<int,int> mpp;
+        map<int, int> mpp;
+        int curr_sum = 0;
+        int maxi = 0;
         for(int i = 0; i < n; i++)
         {
-            sum += A[i];
-            if(sum == 0)
+            curr_sum += A[i];
+            
+            if(curr_sum == 0)
             {
-                max_length = i+1;
+                maxi = max(maxi, i+1);
+            }
+            else if(mpp.find(curr_sum) != mpp.end())
+            {
+                int val = i - mpp[curr_sum];
+                maxi = max(maxi, val);
             }
             else
             {
-                if(mpp.find(sum) != mpp.end())
-                {
-                    max_length = max(max_length,i-mpp[sum]);
-                }
-                else
-                {
-                    mpp[sum] = i;
-                }
+                mpp[curr_sum] = i;
             }
+            
         }
-        return max_length;
+        return maxi;
     }
 };
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -61,4 +61,5 @@ int main()
 }
 
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
