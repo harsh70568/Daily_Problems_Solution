@@ -20,11 +20,9 @@ class Solution {
         }
     }
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
-        // Code here
-        vector<int> ans;
         vector<int> vis(V,0);
+        vector<int> ans;
         dfs(0, ans, adj, vis);
-        
         return ans;
     }
 };
