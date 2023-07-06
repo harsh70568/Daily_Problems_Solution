@@ -1,32 +1,35 @@
 class Solution {
 public:
-    void dfs(int r, int c, vector<vector<int>> &vis, vector<vector<char>> &grid, vector<int> &dx, vector<int> &dy)
+    void dfs(int i, int j, vector<vector<char>> &grid, vector<vector<int>> &vis)
     {
-        vis[r][c] = 1;
+        vis[i][j] = 1;
         
-        for(int i = 0; i < 4; i++)
+        int m = grid.size();
+        int n = grid[0].size();
+        vector<int> dx = {-1, 0, +1, 0};
+        vector<int> dy = {0, +1, 0, -1};
+        
+        for(int k = 0; k < 4; k++)
         {
-            int new_i = r + dx[i];
-            int new_j = c + dy[i];
+            int new_r = i + dx[k];
+            int new_c = j + dy[k];
             
-            if(new_i < grid.size() && new_i >= 0 && new_j < grid[0].size() && new_j >= 0)  // index valid
+            if(new_r >= 0 && new_r < m && new_c >= 0 && new_c < n)
             {
-                if(grid[new_i][new_j] == '1' && vis[new_i][new_j] == 0)
+                if(vis[new_r][new_c] == 0 && grid[new_r][new_c] == '1')
                 {
-                    dfs(new_i, new_j, vis, grid, dx, dy);
+                    dfs(new_r, new_c, grid, vis);
                 }
             }
-        }
+        } 
     }
+    
     int numIslands(vector<vector<char>>& grid) {
         int m = grid.size();
         int n = grid[0].size();
         
-        
         vector<vector<int>> vis(m, vector<int>(n,0));
         int cnt = 0;
-        vector<int> dx = {-1, 0, +1, 0};
-        vector<int> dy = {0, +1, 0, -1};
         for(int i = 0; i < m; i++)
         {
             for(int j = 0; j < n; j++)
@@ -34,11 +37,10 @@ public:
                 if(grid[i][j] == '1' && vis[i][j] == 0)
                 {
                     cnt++;
-                    dfs(i, j, vis, grid, dx, dy);
+                    dfs(i, j, grid, vis);
                 }
             }
         }
-        
         return cnt;
     }
 };
