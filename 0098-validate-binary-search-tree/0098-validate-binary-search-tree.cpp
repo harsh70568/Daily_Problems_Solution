@@ -14,7 +14,7 @@ public:
     void solve(TreeNode* root, long long mini, long long maxi, bool &flag)
     {
         if(root == NULL) return;
-        if(mini >= root->val || maxi <= root->val) flag = false;
+        if(root->val <= mini || root->val >= maxi) flag = false;
         
         solve(root->left, mini, root->val, flag);
         solve(root->right, root->val, maxi, flag);
