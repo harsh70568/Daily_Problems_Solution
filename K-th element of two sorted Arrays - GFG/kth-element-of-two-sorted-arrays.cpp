@@ -1,29 +1,52 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution{
     public:
     int kthElement(int arr1[], int arr2[], int n, int m, int k)
     {
-        vector<int> ans;
-        for(int i = 0; i < n; i++)
+        int i = 0;
+        int j = 0;
+        
+        int cnt = 0;
+        while(i < n && j < m)
         {
-            ans.push_back(arr1[i]);
+            if(arr1[i] <= arr2[j])
+            {
+                cnt++;
+                if(cnt == k) return arr1[i];
+                i++;
+            }
+            else
+            {
+                cnt++;
+                if(cnt == k) return arr2[j];
+                j++;
+            }
         }
         
-        for(int j = 0; j < m; j++)
+        while(i < n)
         {
-            ans.push_back(arr2[j]);
+            cnt++;
+            if(cnt == k) return arr1[i];
+            i++;
         }
-        sort(ans.begin(),ans.end());
-        return ans[k-1];
+        
+        while(j < m)
+        {
+            cnt++;
+            if(cnt == k) return arr2[j];
+            j++;
+        }
+        
+        return -1;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
  
 // Driver code
 int main()
@@ -43,4 +66,5 @@ int main()
         cout << ob.kthElement(arr1, arr2, n, m, k)<<endl;
 	}
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
