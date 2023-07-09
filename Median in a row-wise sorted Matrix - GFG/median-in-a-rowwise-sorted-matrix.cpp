@@ -1,41 +1,63 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function template for C++
 
 class Solution{   
 public:
-    int median(vector<vector<int>> &matrix, int r, int c){
-        // code here      
-        vector<int> ans;
-        for(int i = 0; i < r; i++)
+int small_than(vector<int> &a, int x)
+{
+    int low = 0;
+    int high = a.size()-1;
+    
+    while(low <= high)
+    {
+        int mid = (low + high) >> 1;
+        if(a[mid] <= x)
         {
-            for(int j = 0; j < c; j++)
-            {
-                ans.push_back(matrix[i][j]);
-            }
-        }
-        sort(ans.begin(),ans.end());
-        int size = ans.size();
-        if(size % 2 == 0)
-        {
-            int first = ans[size/2];
-            int second = ans[(size/2)-1];
-            return (first+second)/2;
+            low = mid + 1;
         }
         else
         {
-            return ans[size/2];
+            high = mid - 1;
         }
+    }
+    
+    return low;
+}
+    int median(vector<vector<int>> &mat, int r, int c){
+        int low = 1;
+        int high = 2000;
+        
+        while(low <= high)
+        {
+            int mid = (low + high) >> 1;
+            int cnt = 0;
+            for(int i = 0; i < r; i++)
+            {
+                cnt += small_than(mat[i], mid);
+            }
+            
+            if(cnt <= (r*c)/2)
+            {
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid - 1;
+            }
+        }
+        return low;
     }
 };
 
-// { Driver Code Starts.
+
+//{ Driver Code Starts.
 
 int main()
 {
@@ -50,7 +72,10 @@ int main()
             for(int j = 0;j < c; ++j)
                 cin>>matrix[i][j];
         Solution obj;
-        cout<<obj.median(matrix, r, c)<<endl;        
+        int ans=-1;
+        ans=obj.median(matrix, r, c);
+        cout<<ans<<"\n";        
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
