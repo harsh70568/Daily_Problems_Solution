@@ -1,9 +1,9 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 
 
 class Solution
@@ -12,28 +12,30 @@ class Solution
     //Function to calculate the span of stockâ€™s price for all n days.
     vector <int> calculateSpan(int price[], int n)
     {
-       // Your code here
        vector<int> ans;
-       ans.push_back(1);
-       stack<int> st;
-       st.push(0);
-       for(int i = 1; i < n; i++)
+       reverse(price, price+n);
+       
+       stack<pair<int, int>> st;
+       for(int i = n-1; i >= 0; i--)
        {
-           while(!st.empty() && price[st.top()] <= price[i])
+           while(!st.empty() && price[i] >= st.top().first)
            {
                st.pop();
            }
-           int span = st.empty() ? i+1 : i-st.top();
-           ans.push_back(span);
-           st.push(i);
+           
+           int val = st.empty() ? n : st.top().second;
+           ans.push_back(val - i);
+           st.push({price[i], i});
        }
+       
+       //reverse(ans.begin(), ans.end());
        return ans;
     }
 };
 
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -59,4 +61,5 @@ int main()
 	}
 	return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
