@@ -10,30 +10,22 @@ using namespace std;
 
 class Solution{
     public:
-    int maxLen(vector<int>&A, int n)
+    int maxLen(vector<int>& arr, int n)
     {   
-        // Your code here
         map<int, int> mpp;
         int curr_sum = 0;
         int maxi = 0;
         for(int i = 0; i < n; i++)
         {
-            curr_sum += A[i];
+            curr_sum += arr[i];
             
-            if(curr_sum == 0)
-            {
-                maxi = max(maxi, i+1);
-            }
+            if(curr_sum == 0) maxi = max(maxi, i+1);
             else if(mpp.find(curr_sum) != mpp.end())
             {
-                int val = i - mpp[curr_sum];
-                maxi = max(maxi, val);
+                int val = mpp[curr_sum];
+                maxi = max(maxi, i - val);
             }
-            else
-            {
-                mpp[curr_sum] = i;
-            }
-            
+            else mpp[curr_sum] = i;
         }
         return maxi;
     }
