@@ -10,19 +10,18 @@ void solve(int index, vector<int> &arr, vector<int> &temp, vector<int> &ans)
 {
     if(index >= arr.size())
     {
-        int sum = 0;
-        for(auto it : temp) sum += it;
+        int sum = accumulate(temp.begin(), temp.end(), 0);
         ans.push_back(sum);
         return;
     }
-    
-    // not_pick
-    solve(index+1, arr, temp, ans);
     
     // pick
     temp.push_back(arr[index]);
     solve(index+1, arr, temp, ans);
     temp.pop_back();
+    
+    //not_pick
+    solve(index+1, arr, temp, ans);
 }
     vector<int> subsetSums(vector<int> arr, int N)
     {
