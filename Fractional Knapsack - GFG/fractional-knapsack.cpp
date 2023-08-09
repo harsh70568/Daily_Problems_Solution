@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -8,7 +8,7 @@ struct Item{
 };
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //class implemented
 /*
 struct Item{
@@ -21,26 +21,31 @@ struct Item{
 class Solution
 {
     public:
-    //Function to get the maximum total value in the knapsack.
     double fractionalKnapsack(int W, Item arr[], int n)
     {
-        // Your code here
         double ans = 0.0;
-        vector<pair<double,int>> v;
+        vector<pair<double, int>> temp;
         for(int i = 0; i < n; i++)
         {
-            v.push_back({(double)arr[i].value/(double)arr[i].weight,arr[i].weight});
+            temp.push_back({(double)arr[i].value / arr[i].weight, arr[i].weight});
         }
         
-        sort(v.begin(),v.end());
-        reverse(v.begin(),v.end());
+        sort(temp.begin(), temp.end());
+        reverse(temp.begin(), temp.end());
         
-        for(auto it : v)
+        for(int i = 0; i < n; i++)
         {
-            if(W == 0) break;
-            int curr_weight = min(it.second,W);
-            ans += curr_weight*it.first;
-            W -= curr_weight;
+            if(temp[i].second <= W)
+            {
+                W -= temp[i].second;
+                ans += (temp[i].first*temp[i].second);
+            }
+            else
+            {
+                ans += (temp[i].first*W);
+                W = 0;
+                break;
+            }
         }
         return ans;
     }
@@ -48,7 +53,7 @@ class Solution
 };
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main()
 {
 	int t;
@@ -71,4 +76,5 @@ int main()
 		cout<<ob.fractionalKnapsack(W, arr, n)<<endl;
 	}
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
