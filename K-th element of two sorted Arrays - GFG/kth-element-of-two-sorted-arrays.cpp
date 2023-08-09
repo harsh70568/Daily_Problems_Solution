@@ -14,7 +14,7 @@ class Solution{
         int cnt = 0;
         while(i < n && j < m)
         {
-            if(arr1[i] <= arr2[j])
+            if(arr1[i] < arr2[j])
             {
                 cnt++;
                 if(cnt == k) return arr1[i];
@@ -34,14 +34,12 @@ class Solution{
             if(cnt == k) return arr1[i];
             i++;
         }
-        
         while(j < m)
         {
             cnt++;
             if(cnt == k) return arr2[j];
             j++;
         }
-        
         return -1;
     }
 };
