@@ -31,29 +31,27 @@ class Solution
     {
         return a.profit > b.profit;
     }
+    
     vector<int> JobScheduling(Job arr[], int n) 
     { 
         sort(arr, arr+n, cmp);
-        int maxi = -1;
-        for(int i = 0; i < n; i++) maxi = max(maxi, arr[i].dead);
+        vector<int> slot(n,-1);
         
-        vector<int> slot(maxi+1, -1);
-        int profit = 0;
-        int cnt = 0;
+        int sum = 0, cnt = 0;
         for(int i = 0; i < n; i++)
         {
-            for(int j = arr[i].dead; j > 0; j--)
+            for(int j = arr[i].dead-1; j >= 0; j--)
             {
                 if(slot[j] == -1)
                 {
-                    profit += arr[i].profit;
-                    slot[j] = arr[i].id;
                     cnt++;
+                    sum += arr[i].profit;
+                    slot[j] = 1;
                     break;
                 }
             }
         }
-        return {cnt, profit};
+        return {cnt, sum};
     } 
 };
 
